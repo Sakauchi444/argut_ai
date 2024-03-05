@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-05T10:01:47.505Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="YZEMxuicozO9wqK3AK4o" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-05T10:02:07.462Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="1Be_yoao9dcoIQsLOPUx" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
     <mxGraphModel dx="2099" dy="853" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -34,10 +34,10 @@
         <mxCell id="vvA__PM_Cr4niP8rY80Y-11" value="Users" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-110" y="298" width="83.75" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-13" value="Frontend" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-13" value="Frontend" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
           <mxGeometry x="258.75" y="255" width="112.5" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-14" value="B&lt;span style=&quot;background-color: initial; font-size: 24px;&quot;&gt;ack&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-size: 24px;&quot;&gt;end&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-14" value="B&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;ack&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-size: 18px;&quot;&gt;end&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
           <mxGeometry x="255.5" y="380" width="115" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-15" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
