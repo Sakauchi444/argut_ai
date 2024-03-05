@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-05T08:43:11.456Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="oidvbQr_xFmieqO8tZ_h" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-05T08:44:44.453Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="lsh1a-0fRmOKMTLc2qh5" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
-    <mxGraphModel dx="2947" dy="1422" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2295" dy="985" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -108,6 +108,12 @@
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-44" value="CloudFront" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="268.75" y="634" width="87" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-45" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-790" y="469.85" width="450" height="300.15" as="geometry" />
+        </mxCell>
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-46" value="悩み&lt;div&gt;・サーバーどこにおくか（ローカル？EC2？vercel？）&lt;/div&gt;&lt;div&gt;・&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-760" y="554" width="360" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
