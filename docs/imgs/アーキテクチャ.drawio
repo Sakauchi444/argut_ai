@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-05T10:08:23.082Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="3dZCHjlNhoA_sMWZXmt3" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-05T10:10:12.528Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="yQpjcR5Dt_tkMJgziA6i" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
     <mxGraphModel dx="1357" dy="356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -92,7 +92,7 @@
           <mxGeometry x="291.75" y="940" width="42" height="51" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-36" value="API Gateway" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="269.25" y="750" width="87" height="30" as="geometry" />
+          <mxGeometry x="269.5" y="750" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-38" value="送受信用&lt;div&gt;L&lt;span style=&quot;background-color: initial;&quot;&gt;ambda&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="268.75" y="861" width="87" height="30" as="geometry" />
@@ -115,13 +115,7 @@
         <mxCell id="vvA__PM_Cr4niP8rY80Y-48" value="&lt;div&gt;接続用&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="356.5" y="861" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-49" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-36" target="vvA__PM_Cr4niP8rY80Y-47">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="350" y="820" as="sourcePoint" />
-            <mxPoint x="400" y="770" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-50" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-32" target="vvA__PM_Cr4niP8rY80Y-48">
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-49" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-31" target="vvA__PM_Cr4niP8rY80Y-47">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="350" y="820" as="sourcePoint" />
             <mxPoint x="400" y="770" as="targetPoint" />
@@ -150,6 +144,18 @@
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-57" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;切断用&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="170.75" y="861" width="87" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-58" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-48" target="vvA__PM_Cr4niP8rY80Y-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="820" as="sourcePoint" />
+            <mxPoint x="350" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-59" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="vvA__PM_Cr4niP8rY80Y-56">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="313" y="750" as="sourcePoint" />
+            <mxPoint x="220" y="720" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
