@@ -1,5 +1,9 @@
 # Hackit_team07
 2024/3/2~3/19
+### ArgutAI
+ArgutAI((アーギュテーアイ)
+ラテン語で「鋭い議論」を意味する"argutia"とAIを掛け合わせました．
+
 ### Hackit
 https://kit-hackit.notion.site/Hackit2-Challenge-c34eb7ba24a2484288b3404584367065?pvs=74
 
