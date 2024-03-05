@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-05T13:31:25.027Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="fPPMDbuD3lj8qxkpN_wo" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-05T13:32:20.564Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="GnEpdXwC3XKIyysua8uw" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
     <mxGraphModel dx="2020" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -43,14 +43,8 @@
         <mxCell id="vvA__PM_Cr4niP8rY80Y-29" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.cloud_2;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
           <mxGeometry x="-110" y="550" width="65" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-30" target="vvA__PM_Cr4niP8rY80Y-32">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-30" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="288" y="811" width="48.5" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-31" target="vvA__PM_Cr4niP8rY80Y-30">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry x="235.12" y="811" width="48.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-31" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
           <mxGeometry x="287.25" y="700" width="50" height="50" as="geometry" />
@@ -62,7 +56,7 @@
           <mxGeometry x="269.5" y="750" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-38" value="Gemini用&lt;div&gt;L&lt;span style=&quot;background-color: initial;&quot;&gt;ambda&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="268.75" y="861" width="87" height="30" as="geometry" />
+          <mxGeometry x="215.87" y="861" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-39" value="会話ログDB" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="269.5" y="1000" width="87" height="30" as="geometry" />
@@ -77,10 +71,10 @@
           <mxGeometry x="268.75" y="634" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-47" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="490.75" y="811" width="48.5" height="50" as="geometry" />
+          <mxGeometry x="437.87" y="811" width="48.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-48" value="&lt;div&gt;接続用&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="465" y="861" width="100" height="30" as="geometry" />
+          <mxGeometry x="412.12" y="861" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-49" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-31" target="vvA__PM_Cr4niP8rY80Y-47">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -107,10 +101,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-56" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="190" y="811" width="48.5" height="50" as="geometry" />
+          <mxGeometry x="137.12" y="811" width="48.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-57" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;切断用&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="170.75" y="861" width="87" height="30" as="geometry" />
+          <mxGeometry x="117.87" y="861" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-58" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-48" target="vvA__PM_Cr4niP8rY80Y-32">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -170,10 +164,10 @@
           <mxGeometry x="620" y="686.06" width="180" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-76" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="390" y="811" width="48.5" height="50" as="geometry" />
+          <mxGeometry x="337.12" y="811" width="48.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-77" value="GPTs用&lt;br&gt;Lambda" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="370" y="861" width="87" height="30" as="geometry" />
+          <mxGeometry x="317.12" y="861" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-79" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-36" target="vvA__PM_Cr4niP8rY80Y-76">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -185,6 +179,18 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="410" y="890" as="sourcePoint" />
             <mxPoint x="460" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-81" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="vvA__PM_Cr4niP8rY80Y-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="750" as="sourcePoint" />
+            <mxPoint x="460" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-82" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vvA__PM_Cr4niP8rY80Y-38" target="vvA__PM_Cr4niP8rY80Y-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="850" as="sourcePoint" />
+            <mxPoint x="460" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
