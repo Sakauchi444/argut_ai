@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-05T07:49:18.279Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="FoiEcPPsysPpnG3XN1Lc" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-05T07:49:29.203Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="p9OYjjWuy2HNjAh7ine1" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
     <mxGraphModel dx="2020" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -25,7 +25,7 @@
         <mxCell id="vvA__PM_Cr4niP8rY80Y-10" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" vertex="1" parent="1">
           <mxGeometry x="-110" y="238" width="77.5" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-11" value="ユーザ" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-11" value="Users" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-110" y="298" width="83.75" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-13" value="Frontend" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
