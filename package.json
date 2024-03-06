@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fmt": "biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src",
+    "fmt:lefthook": "biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}"
   },
   "dependencies": {
     "@mantine/core": "^7.6.1",
