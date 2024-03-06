@@ -1,4 +1,5 @@
 import { Button, Container, Flex, Text, Title } from "@mantine/core";
+import Link from "next/link";
 import classes from "./HeroImage.module.css";
 
 export function HeroImage() {
@@ -26,22 +27,26 @@ export function HeroImage() {
 							AI技術の最前線で繰り広げられる議論の世界に飛び込み、知的好奇心を刺激する旅に出ましょう。
 						</Text>
 						<Flex gap={20} mt={40} direction={{ md: "row", base: "column" }}>
-							<Button
-								variant="gradient"
-								gradient={{ from: "pink", to: "yellow" }}
-								size="xl"
-								className={classes.control}
-							>
-								Let AI Debate
-							</Button>
-							<Button
-								variant="gradient"
-								gradient={{ from: "pink", to: "yellow" }}
-								size="xl"
-								className={classes.control}
-							>
-								View past debates
-							</Button>
+							<Link href="/argutia">
+								<Button
+									variant="gradient"
+									gradient={{ from: "pink", to: "yellow" }}
+									size="xl"
+									className={classes.control}
+								>
+									Let AI Debate
+								</Button>
+							</Link>
+							<Link href="/argutia/search">
+								<Button
+									variant="gradient"
+									gradient={{ from: "pink", to: "yellow" }}
+									size="xl"
+									className={classes.control}
+								>
+									View past debates
+								</Button>
+							</Link>
 						</Flex>
 					</div>
 				</div>
