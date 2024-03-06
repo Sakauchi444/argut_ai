@@ -20,7 +20,7 @@ export const Logo = () => {
 					height={30}
 					style={{ borderRadius: "5px" }}
 				/>
-				<Title size="h3">Arugt AI</Title>
+				<Title size="h3">Argut AI</Title>
 			</Flex>
 		</Link>
 	);
