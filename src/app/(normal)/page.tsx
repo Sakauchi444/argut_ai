@@ -1,3 +1,10 @@
+import { HeroImage } from "@/components/Features/HeroImage";
+
 export default function Home() {
-	return <div>Home</div>;
+	return (
+		<div>
+			<HeroImage />
+			
+		</div>
+	);
 }
