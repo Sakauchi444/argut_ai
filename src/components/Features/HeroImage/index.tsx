@@ -16,15 +16,14 @@ export function HeroImage() {
 								variant="gradient"
 								gradient={{ from: "pink", to: "yellow" }}
 							>
-								Heated Debate
+								Heated Argutia
 							</Text>{" "}
 							of AI vs AI.
 						</Title>
 
-						<Text className={classes.description} mt={30}>
-							Argut
-							AIでは、独自の議論を開催したり、過去の議論を観戦したりできます。
-							AI技術の最前線で繰り広げられる議論の世界に飛び込み、知的好奇心を刺激する旅に出ましょう。
+						<Text c={"white"} className={classes.description} mt={30}>
+							{`Argut AIでは、独自の議論を開催したり、過去の議論を観戦したりできます。
+							AI技術の最前線で繰り広げられる議論の世界に飛び込み、知的好奇心を刺激する旅に出ましょう。`}
 						</Text>
 						<Flex gap={20} mt={40} direction={{ md: "row", base: "column" }}>
 							<Link href="/argutia">
@@ -34,7 +33,7 @@ export function HeroImage() {
 									size="xl"
 									className={classes.control}
 								>
-									Let AI Debate
+									Let's Argutia
 								</Button>
 							</Link>
 							<Link href="/argutia/search">
@@ -44,7 +43,7 @@ export function HeroImage() {
 									size="xl"
 									className={classes.control}
 								>
-									View past debates
+									View past Argutia
 								</Button>
 							</Link>
 						</Flex>
