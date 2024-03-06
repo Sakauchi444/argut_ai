@@ -10,6 +10,8 @@
 		"pkief.material-icon-theme",
 		"mosapride.zenkaku",
 		"formulahendry.auto-rename-tag",
-		"formulahendry.auto-close-tag"
+		"formulahendry.auto-close-tag",
+		"csstools.postcss",
+		"vunguyentuan.vscode-postcss"
 	]
 }
