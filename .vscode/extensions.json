@@ -1,0 +1,15 @@
+{
+	"recommendations": [
+		"biomejs.biome",
+		"streetsidesoftware.code-spell-checker",
+		"rodrigovallades.es7-react-js-snippets",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"ms-ceintl.vscode-language-pack-ja",
+		"xabikos.javascriptsnippets",
+		"pkief.material-icon-theme",
+		"mosapride.zenkaku",
+		"formulahendry.auto-rename-tag",
+		"formulahendry.auto-close-tag"
+	]
+}
