@@ -1,3 +1,4 @@
+import { Footer } from "@/components/Layout/Footer";
 import { HeaderMenu } from "@/components/Layout/HeaderMenu";
 import "@mantine/core/styles.css";
 import type { Metadata } from "next";
@@ -22,7 +23,8 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Providers>
 					<HeaderMenu />
-					{children}
+					<main style={{ minHeight: "calc(100vh - 155px)" }}>{children}</main>
+					<Footer />
 				</Providers>
 			</body>
 		</html>

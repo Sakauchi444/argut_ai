@@ -1,18 +1,10 @@
 "use client";
 
-import {
-	Burger,
-	Center,
-	Container,
-	Flex,
-	Group,
-	Menu,
-	Title,
-} from "@mantine/core";
+import { Burger, Center, Container, Group, Menu } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import Image from "next/image";
 import Link from "next/link";
+import { Logo } from "../Logo";
 import classes from "./HeaderMenu.module.css";
 
 const links = [
@@ -27,7 +19,6 @@ const links = [
 			{ link: "/blog", label: "Blog" },
 		],
 	},
-	{ link: "/about", label: "About" },
 	{ link: "/pricing", label: "Pricing" },
 	{
 		link: "#2",
@@ -80,24 +71,7 @@ export function HeaderMenu() {
 		<header className={classes.header}>
 			<Container size="md">
 				<div className={classes.inner}>
-					<Link
-						href={"/"}
-						style={{
-							textDecoration: "none",
-							color: "var(--mantine-color-text)",
-						}}
-					>
-						<Flex direction={"row"} gap={3}>
-							<Image
-								src={"/images/logo.png"}
-								alt={"logo"}
-								width={30}
-								height={30}
-								style={{ borderRadius: "5px" }}
-							/>
-							<Title size="h4">Arugt AI</Title>
-						</Flex>
-					</Link>
+					<Logo />
 					<Group gap={5} visibleFrom="sm">
 						{items}
 					</Group>
