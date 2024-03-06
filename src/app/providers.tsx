@@ -1,18 +1,14 @@
-import React from 'react'
-import { MantineProvider, createTheme } from '@mantine/core';
+import { MantineProvider, createTheme } from "@mantine/core";
+import React from "react";
 
-const theme = createTheme({
+const theme = createTheme({});
 
-});
-
-const Providers = ({ children }: Readonly<{
+const Providers = ({
+	children,
+}: Readonly<{
 	children: React.ReactNode;
 }>) => {
-  return (
-    <MantineProvider theme={theme}>
-      {children}
-    </MantineProvider>
-  )
-}
+	return <MantineProvider theme={theme}>{children}</MantineProvider>;
+};
 
-export default Providers
+export default Providers;
