@@ -8,25 +8,25 @@ import { Logo } from "../Logo";
 import classes from "./HeaderMenu.module.css";
 
 const links = [
-	{ link: "/about", label: "Features" },
+	{ link: "/argutia", label: "Argutia" },
+	{ link: "/how_to_play", label: "How to Play" },
 	{
-		link: "#1",
-		label: "Learn",
+		link: "#Log",
+		label: "Log",
 		links: [
-			{ link: "/docs", label: "Documentation" },
+			{ link: "/search_log", label: "Documentation" },
 			{ link: "/resources", label: "Resources" },
 			{ link: "/community", label: "Community" },
 			{ link: "/blog", label: "Blog" },
 		],
 	},
-	{ link: "/pricing", label: "Pricing" },
+	{ link: "/privacy_policy", label: "Privacy Policy" },
 	{
-		link: "#2",
+		link: "/support",
 		label: "Support",
 		links: [
 			{ link: "/faq", label: "FAQ" },
-			{ link: "/demo", label: "Book a demo" },
-			{ link: "/forums", label: "Forums" },
+			{ link: "/contact", label: "Contact" },
 		],
 	},
 ];
@@ -36,7 +36,13 @@ export function HeaderMenu() {
 
 	const items = links.map((link) => {
 		const menuItems = link.links?.map((item) => (
-			<Menu.Item key={item.link}>{item.label}</Menu.Item>
+			<Link
+				href={item.link}
+				key={item.link}
+				style={{ textDecoration: "none", color: "var(--mantine-color-text)" }}
+			>
+				<Menu.Item>{item.label}</Menu.Item>
+			</Link>
 		));
 
 		if (menuItems) {
