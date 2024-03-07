@@ -4,7 +4,7 @@ import classes from "./HeroImage.module.css";
 
 export function HeroImage() {
 	return (
-		<div className={classes.root}>
+		<section className={classes.root}>
 			<Container size="lg">
 				<div className={classes.inner}>
 					<div className={classes.content}>
@@ -50,6 +50,6 @@ export function HeroImage() {
 					</div>
 				</div>
 			</Container>
-		</div>
+		</section>
 	);
 }

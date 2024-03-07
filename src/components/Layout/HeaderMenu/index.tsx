@@ -1,8 +1,9 @@
 "use client";
 
-import { Burger, Container, Group } from "@mantine/core";
+import { Burger, Container, Drawer, Flex, Group, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
+import { Footer } from "../Footer";
 import { Logo } from "../Logo";
 import classes from "./HeaderMenu.module.css";
 
@@ -16,7 +17,7 @@ const links = [
 ];
 
 export function HeaderMenu() {
-	const [opened, { toggle }] = useDisclosure(false);
+	const [opened, { toggle, close }] = useDisclosure(false);
 
 	const items = links.map((link) => (
 		<Link key={link.label} href={link.link} className={classes.link}>
@@ -32,9 +33,37 @@ export function HeaderMenu() {
 					<Group gap={5} visibleFrom="sm">
 						{items}
 					</Group>
-					<Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+					<Burger
+						opened={opened}
+						onClick={toggle}
+						size="sm"
+						hiddenFrom="sm"
+						style={{ zIndex: 1000 }}
+					/>
 				</div>
 			</Container>
+			<Drawer
+				opened={opened}
+				onClose={close}
+				position="right"
+				withCloseButton={false}
+			>
+				<Flex
+					direction="column"
+					justify={"space-between"}
+					h="calc(100vh - 32px)"
+				>
+					<Stack
+						mt={40}
+						h={300}
+						bg="var(--mantine-color-body)"
+						justify="flex-start"
+					>
+						{items}
+					</Stack>
+					<Footer />
+				</Flex>
+			</Drawer>
 		</header>
 	);
 }
