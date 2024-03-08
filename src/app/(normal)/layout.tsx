@@ -7,10 +7,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-    <>
-      <HeaderMenu />
-      <main style={{ minHeight: "calc(100vh - 155px)" }}>{children}</main>
-      <Footer />
-    </>
+		<>
+			<HeaderMenu />
+			<main style={{ minHeight: "calc(100vh - 155px)" }}>{children}</main>
+			<Footer />
+		</>
 	);
 }
