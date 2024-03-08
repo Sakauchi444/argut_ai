@@ -1,0 +1,15 @@
+.root {
+  background-color: #11284b;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%),
+    url("/images/students-working-on-project.jpg");
+  padding-top: calc(var(--mantine-spacing-xl) * 3);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 3);
+  height: 100vh;
+  width: 100vw;
+}
+
+.label {
+  color: var(--mantine-color-white);
+}
