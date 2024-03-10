@@ -2,11 +2,13 @@ type Phase = "prepare" | "argutia" | "result";
 
 type SubmitData = {
 	agenda: string;
-	model1: string;
-	model2: string;
+	speaker1: string;
+	speaker2: string;
+	position1: string;
+	position2: string;
 };
 
-type ArgutiaPhase = "initialize" | "A" | "B" | "waiting";
+type ArgutiaPhase = "initialize" | "speaker1" | "spreaker2" | "waiting";
 
 type ArgutiaOption = {
 	isPaused: boolean;
@@ -15,8 +17,8 @@ type ArgutiaOption = {
 
 type ArgutiaData = {
 	agenda: string;
-	model1: string;
-	model2: string;
-	A_comments: string[];
-	B_comments: string[];
+	speaker1: string;
+	speaker2: string;
+	speaker1_comments: string[];
+	speaker2_comments: string[];
 };

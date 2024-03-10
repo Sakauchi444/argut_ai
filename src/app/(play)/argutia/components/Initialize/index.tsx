@@ -32,7 +32,7 @@ const initialize: FC<Props> = ({ setArgutiaPhase }) => {
 		const timerId = setInterval(() => {
 			setPhraseIndex(Math.floor(Math.random() * LoadingPhrases.length));
 
-			setArgutiaPhase("A"); // TODO: 後で消す
+			setArgutiaPhase("speaker1"); // TODO: 後で消す
 		}, 5000); // 5秒ごとにフレーズを更新
 
 		return () => clearInterval(timerId);
