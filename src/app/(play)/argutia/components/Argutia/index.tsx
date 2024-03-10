@@ -1,7 +1,7 @@
 import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import classes from "./argutia.module.css";
 import Loading from "@/components/Atoms/Loading";
 
@@ -11,12 +11,39 @@ type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
 };
 
+const LoadingPhrases = [
+  "AIがストレッチをしています...",
+  "AIがデジタル脳のウォームアップ中...",
+  "AIが知識の海を潜っています...",
+  "AIが情報の宇宙を旅しています...",
+  "AIがデータの山を登っています...",
+  "AIがコードの迷路を解いています...",
+  "AIが思考回路をチューニング中...",
+  "AIがクリエイティビティのスパークを探しています...",
+  "AIが未来の予測を計算中...",
+  "AIが賢さのレベルをアップグレードしています...",
+  "AIが会話エンジンを暖めています...",
+  "AIが知識の花を咲かせています...",
+  "AIが創造性の翼を広げています...",
+  "AIが質問に答える魔法をかけています...",
+  "AIがインスピレーションの光を集めています..."
+]
+
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
-	const [argutiaPhase, setArgutiaPhase] = React.useState<ArgutiaPhase>("initialize");
+	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
+  const [phraseIndex, setPhraseIndex] = useState(0);
 	const [option, setOption] = React.useState<ArgutiaOption>({
 		isPaused: false,
 		playbackSpeed: 1,
 	});
+  
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setPhraseIndex(Math.floor(Math.random() * LoadingPhrases.length));
+    }, 5000); // 5秒ごとにフレーズを更新
+
+    return () => clearInterval(timerId);
+  }, []);
 
 	const handlePlaybackSpeed = () => {
 		setOption({
@@ -25,7 +52,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		});
 	};
 	if (argutiaPhase === "initialize") {
-		return <div className={classes.root}><Center h={"100%"}><Title size={"h3"}>AIが準備体操をしています...</Title><Loading /></Center></div>;
+		return <div className={classes.root}><Container component={Center} h={"100%"} size={"lg"}><Title size={"h3"} className={classes.fadeText}>{LoadingPhrases[phraseIndex]}</Title><Loading /></Container></div>;
 	}
 
 	return (
@@ -57,7 +84,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ objectFit: "contain" }}
 						/>
-						<Title>モデル2: {data.model2}</Title>
+						<Title>○○派: {data.model2}</Title>
 					</Flex>
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
