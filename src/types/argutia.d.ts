@@ -15,10 +15,7 @@ type ArgutiaOption = {
 	playbackSpeed: number;
 };
 
-type ArgutiaData = {
-	agenda: string;
-	speaker1: string;
-	speaker2: string;
+type ArgutiaData = SubmitData & {
 	speaker1_comments: string[];
 	speaker2_comments: string[];
 };

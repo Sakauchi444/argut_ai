@@ -11,6 +11,8 @@ const ArgutiaPage = () => {
 		agenda: "",
 		speaker1: "GPT-4",
 		speaker2: "GPT-4",
+		position1: "",
+		position2: "",
 		speaker1_comments: [],
 		speaker2_comments: [],
 	});

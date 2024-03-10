@@ -46,7 +46,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
 						/>
-						<Title>○○派: {data.speaker1}</Title>
+						<Title>{data.position1}:  {data.speaker1}</Title>
 					</Flex>
 					<Flex flex={"0 0 50%"}>
 						<Box bg={"red"} />
@@ -59,7 +59,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ objectFit: "contain" }}
 						/>
-						<Title>○○派: {data.speaker2}</Title>
+						<Title>{data.position2}: {data.speaker2}</Title>
 					</Flex>
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
