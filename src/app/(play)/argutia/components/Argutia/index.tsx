@@ -1,5 +1,6 @@
-import { ActionIcon, Box, Button, Container, Flex, Grid, GridCol, Title } from "@mantine/core";
+import { ActionIcon, Box, Button, Container, Flex, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
+import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction } from "react";
 import classes from "./argutia.module.css";
 
@@ -30,21 +31,33 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					<Title>議題: {data.agenda}</Title>
 					<Title size={"h4"}>フェーズ: {argutiaPhase}</Title>
 				</Box>
-				<Grid flex={1}>
-					<GridCol span={3}>
+				<Flex flex={1}>
+					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
+						<Image
+							src={"/images/ずんだもん_0001.png"}
+							alt={"Player1"}
+							fill
+							sizes="25%"
+							style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
+						/>
+						<Title>○○派: {data.model1}</Title>
+					</Flex>
+					<Flex flex={"0 0 50%"}>
 						<Box bg={"red"} />
-						<Title>モデル1: {data.model1}</Title>
-					</GridCol>
-					<GridCol span={6}>
-						<Box bg={"red"} />
-					</GridCol>
-					<GridCol span={3}>
-						<Box bg={"red"} />
+					</Flex>
+					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
+						<Image
+							src={"/images/ずんだもん_0001.png"}
+							alt={"Player1"}
+							fill
+							sizes="25%"
+							style={{ objectFit: "contain" }}
+						/>
 						<Title>モデル2: {data.model2}</Title>
-					</GridCol>
-				</Grid>
+					</Flex>
+				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
-				<Flex justify={"space-around"}>
+				<Flex justify={"space-around"} className={classes.menu}>
 					<ActionIcon variant="gradient" gradient={{ from: "pink", to: "yellow" }} size={"lg"}>
 						<IconMessage />
 					</ActionIcon>
@@ -60,6 +73,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						variant="gradient"
 						gradient={{ from: "pink", to: "yellow" }}
 						onClick={handlePlaybackSpeed}
+						w={"70px"}
 					>{`x${option.playbackSpeed.toFixed(1)}`}</Button>
 				</Flex>
 			</Container>

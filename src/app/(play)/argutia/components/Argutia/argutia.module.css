@@ -2,7 +2,7 @@
   background-color: #11284b;
   background-size: cover;
   background-position: center;
-  padding-top: calc(var(--mantine-spacing-xl));
+  padding-top: var(--mantine-spacing-xl);
   height: 100vh;
   width: 100vw;
   * {
@@ -10,6 +10,16 @@
   }
 }
 
-.label {
-  color: var(--mantine-color-white);
+.menu {
+  border: var(--mantine-color-white) 2px solid;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--mantine-spacing-xl);
+  margin-top: var(--mantine-spacing-xl);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
