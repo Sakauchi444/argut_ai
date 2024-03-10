@@ -1,49 +1,23 @@
 import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
-import React, { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import Initialize from "../Initialize";
 import classes from "./argutia.module.css";
-import Loading from "@/components/Atoms/Loading";
 
 type Props = {
 	data: ArgutiaData;
-	setData: Dispatch<SetStateAction<ArgutiaData | null>>;
+	setData: Dispatch<SetStateAction<ArgutiaData>>;
 	setPhase: Dispatch<SetStateAction<Phase>>;
 };
 
-const LoadingPhrases = [
-  "AIがストレッチをしています...",
-  "AIがデジタル脳のウォームアップ中...",
-  "AIが知識の海を潜っています...",
-  "AIが情報の宇宙を旅しています...",
-  "AIがデータの山を登っています...",
-  "AIがコードの迷路を解いています...",
-  "AIが思考回路をチューニング中...",
-  "AIがクリエイティビティのスパークを探しています...",
-  "AIが未来の予測を計算中...",
-  "AIが賢さのレベルをアップグレードしています...",
-  "AIが会話エンジンを暖めています...",
-  "AIが知識の花を咲かせています...",
-  "AIが創造性の翼を広げています...",
-  "AIが質問に答える魔法をかけています...",
-  "AIがインスピレーションの光を集めています..."
-]
-
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
-  const [phraseIndex, setPhraseIndex] = useState(0);
+
 	const [option, setOption] = React.useState<ArgutiaOption>({
 		isPaused: false,
 		playbackSpeed: 1,
 	});
-  
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setPhraseIndex(Math.floor(Math.random() * LoadingPhrases.length));
-    }, 5000); // 5秒ごとにフレーズを更新
-
-    return () => clearInterval(timerId);
-  }, []);
 
 	const handlePlaybackSpeed = () => {
 		setOption({
@@ -52,7 +26,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		});
 	};
 	if (argutiaPhase === "initialize") {
-		return <div className={classes.root}><Container component={Center} h={"100%"} size={"lg"}><Title size={"h3"} className={classes.fadeText}>{LoadingPhrases[phraseIndex]}</Title><Loading /></Container></div>;
+		return <Initialize setArgutiaPhase={setArgutiaPhase} />;
 	}
 
 	return (
@@ -79,7 +53,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
 						<Image
 							src={"/images/ずんだもん_0001.png"}
-							alt={"Player1"}
+							alt={"Player2"}
 							fill
 							sizes="25%"
 							style={{ objectFit: "contain" }}
@@ -89,13 +63,19 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
 				<Flex justify={"space-around"} className={classes.menu}>
-					<ActionIcon variant="gradient" gradient={{ from: "pink", to: "yellow" }} size={"lg"}>
+					<ActionIcon
+						variant="gradient"
+						gradient={{ from: "pink", to: "yellow" }}
+						size={"lg"}
+						w={"70px"}
+					>
 						<IconMessage />
 					</ActionIcon>
 					<ActionIcon
 						variant="gradient"
 						gradient={{ from: "pink", to: "yellow" }}
 						size={"lg"}
+						w={"70px"}
 						onClick={() => setOption({ ...option, isPaused: !option.isPaused })}
 					>
 						{option.isPaused ? <IconPlayerPlay /> : <IconPlayerPause />}
