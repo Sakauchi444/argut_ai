@@ -3,6 +3,7 @@ import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-reac
 import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction } from "react";
 import classes from "./argutia.module.css";
+import Loading from "@/components/Atoms/Loading";
 
 type Props = {
 	data: ArgutiaData;
@@ -23,6 +24,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			playbackSpeed: option.playbackSpeed === 2.5 ? 0.5 : option.playbackSpeed + 0.5,
 		});
 	};
+	if (argutiaPhase === "initialize") {
+		return <div className={classes.root}><Center h={"100%"}><Title size={"h3"}>AIが準備体操をしています...</Title><Loading /></Center></div>;
+	}
 
 	return (
 		<div className={classes.root}>
