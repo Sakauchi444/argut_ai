@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Button, Container, Flex, Title } from "@mantine/core";
+import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction } from "react";
@@ -77,6 +77,13 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					>{`x${option.playbackSpeed.toFixed(1)}`}</Button>
 				</Flex>
 			</Container>
+			{option.isPaused && (
+				<Overlay color="#000" backgroundOpacity={0.85}>
+					<Center h={"100%"}>
+						<Title>Paused</Title>
+					</Center>
+				</Overlay>
+			)}
 		</div>
 	);
 };
