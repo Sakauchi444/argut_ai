@@ -25,6 +25,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			playbackSpeed: option.playbackSpeed === 2.5 ? 0.5 : option.playbackSpeed + 0.5,
 		});
 	};
+
 	if (argutiaPhase === "initialize") {
 		return <Initialize setArgutiaPhase={setArgutiaPhase} />;
 	}
@@ -45,7 +46,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
 						/>
-						<Title>○○派: {data.model1}</Title>
+						<Title>○○派: {data.speaker1}</Title>
 					</Flex>
 					<Flex flex={"0 0 50%"}>
 						<Box bg={"red"} />
@@ -58,7 +59,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ objectFit: "contain" }}
 						/>
-						<Title>○○派: {data.model2}</Title>
+						<Title>○○派: {data.speaker2}</Title>
 					</Flex>
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}

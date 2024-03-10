@@ -26,12 +26,13 @@ const LoadingPhrases = [
 ];
 
 const initialize: FC<Props> = ({ setArgutiaPhase }) => {
-	const [phraseIndex, setPhraseIndex] = useState(0);
+	const [phraseIndex, setPhraseIndex] = useState(Math.floor(Math.random() * LoadingPhrases.length));
 
 	useEffect(() => {
 		const timerId = setInterval(() => {
 			setPhraseIndex(Math.floor(Math.random() * LoadingPhrases.length));
-			setArgutiaPhase("A");
+
+			setArgutiaPhase("A"); // TODO: 後で消す
 		}, 5000); // 5秒ごとにフレーズを更新
 
 		return () => clearInterval(timerId);
