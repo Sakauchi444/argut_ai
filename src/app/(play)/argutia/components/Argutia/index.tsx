@@ -17,7 +17,10 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	});
 
 	const handlePlaybackSpeed = () => {
-		setOption({ ...option, playbackSpeed: option.playbackSpeed === 2.5 ? 0.5 : option.playbackSpeed + 0.5 });
+		setOption({
+			...option,
+			playbackSpeed: option.playbackSpeed === 2.5 ? 0.5 : option.playbackSpeed + 0.5,
+		});
 	};
 
 	return (

@@ -3,7 +3,5 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return (
-		<main style={{ maxHeight: "100vh", overflow: "hidden" }}>{children}</main>
-	);
+	return <main style={{ maxHeight: "100vh", overflow: "hidden" }}>{children}</main>;
 }
