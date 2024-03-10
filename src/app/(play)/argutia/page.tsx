@@ -7,7 +7,13 @@ import Result from "./components/Result";
 
 const ArgutiaPage = () => {
 	const [phase, setPhase] = React.useState<Phase>("prepare");
-	const [data, setData] = React.useState<ArgutiaData | null>(null);
+	const [data, setData] = React.useState<ArgutiaData>({
+		agenda: "",
+		model1: "GPT-4",
+		model2: "GPT-4",
+		A_comments: [],
+		B_comments: [],
+	});
 
 	switch (phase) {
 		case "prepare":

@@ -15,7 +15,7 @@ type SubmitData = {
 
 type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
-	setData: Dispatch<SetStateAction<ArgutiaData | null>>;
+	setData: Dispatch<SetStateAction<ArgutiaData>>;
 };
 
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
