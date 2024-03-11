@@ -8,7 +8,7 @@ type SubmitData = {
 	position2: string;
 };
 
-type ArgutiaPhase = "initialize" | "speaker1" | "spreaker2" | "waiting";
+type ArgutiaPhase = "initialize" | "speaker1" | "speaker2" | "waiting";
 
 type ArgutiaOption = {
 	isPaused: boolean;
