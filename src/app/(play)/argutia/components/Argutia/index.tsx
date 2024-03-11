@@ -46,10 +46,23 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
 						/>
-						<Title>{data.position1}:  {data.speaker1}</Title>
+						<Title>
+							{data.position1}: {data.speaker1}
+						</Title>
 					</Flex>
-					<Flex flex={"0 0 50%"}>
-						<Box bg={"red"} />
+					<Flex flex={"0 0 50%"} className={classes.parent}>
+						<Box
+							w={"100%"}
+							className={`${classes.speech_bubble} ${
+								argutiaPhase === "speaker1" ? classes.left : classes.right
+							}`}
+						>
+							<Box style={{ overflowX: "hidden", overflowY: "auto" }}>
+								<Title size={"h3"} c={"var(--mantine-color-text)"}>
+									ここに発言が表示されます
+								</Title>
+							</Box>
+						</Box>
 					</Flex>
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
 						<Image
@@ -59,7 +72,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							sizes="25%"
 							style={{ objectFit: "contain" }}
 						/>
-						<Title>{data.position2}: {data.speaker2}</Title>
+						<Title>
+							{data.position2}: {data.speaker2}
+						</Title>
 					</Flex>
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
