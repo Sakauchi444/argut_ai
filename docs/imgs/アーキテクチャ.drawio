@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-11T04:01:48.810Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="s-6I2Ug_r9kJ7yfWzE_3" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-11T04:02:19.006Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="kT1O12UTEBiOGsCCnF5a" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
     <mxGraphModel dx="1887" dy="673" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -103,7 +103,7 @@
         <mxCell id="vvA__PM_Cr4niP8rY80Y-56" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" parent="1" vertex="1">
           <mxGeometry x="145" y="811" width="48.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-57" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;切断用&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="vvA__PM_Cr4niP8rY80Y-57" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;会話開始用&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="125.75" y="861" width="87" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-58" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="vvA__PM_Cr4niP8rY80Y-48" target="vvA__PM_Cr4niP8rY80Y-32" edge="1">
@@ -204,9 +204,6 @@
             <mxPoint x="350" y="1090" as="sourcePoint" />
             <mxPoint x="320" y="940" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="vvA__PM_Cr4niP8rY80Y-88" value="" style="shape=mxgraph.mockup.markup.redX;fillColor=#ff0000;html=1;shadow=0;whiteSpace=wrap;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="130" y="811" width="80" height="79" as="geometry" />
         </mxCell>
         <mxCell id="vvA__PM_Cr4niP8rY80Y-89" value="" style="shape=mxgraph.mockup.markup.redX;fillColor=#ff0000;html=1;shadow=0;whiteSpace=wrap;strokeColor=none;" parent="1" vertex="1">
           <mxGeometry x="430" y="811" width="80" height="79" as="geometry" />
