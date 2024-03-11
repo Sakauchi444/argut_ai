@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-11T04:03:07.545Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="cGwJZRD_iDyxZw9FgGYW" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-11T04:50:06.772Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="7bcTuiandHidytbk1chH" version="24.0.1" type="github">
   <diagram name="ページ1" id="hBqYcgdbwJQH-dgVWlWB">
-    <mxGraphModel dx="1887" dy="673" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1816" dy="542" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -219,6 +219,18 @@
         </mxCell>
         <mxCell id="_91d8vO8XhM3lLEn06yE-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;Claude3&lt;/span&gt;&amp;nbsp;API" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="680.5" y="640.14" width="95" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_91d8vO8XhM3lLEn06yE-5" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="69.25" y="811" width="48.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_91d8vO8XhM3lLEn06yE-6" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;過去議論詳細用&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="861" width="87" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_91d8vO8XhM3lLEn06yE-7" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.lambda_function;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-25.75" y="811" width="48.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_91d8vO8XhM3lLEn06yE-8" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;過去議論一覧用&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Lambda&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-45" y="861" width="87" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
