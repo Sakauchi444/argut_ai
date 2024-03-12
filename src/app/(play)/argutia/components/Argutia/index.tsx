@@ -33,6 +33,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	return (
 		<div className={classes.root}>
 			<Container component={Flex} size={"lg"} h={"100%"} style={{ flexDirection: "column" }}>
+				{/* // TODO: ↓コンポーネント切り出し */}
 				<Box>
 					<Title>議題: {data.agenda}</Title>
 					<Title size={"h4"}>フェーズ: {argutiaPhase}</Title>
@@ -50,18 +51,26 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							{data.position1}: {data.speaker1}
 						</Title>
 					</Flex>
-					<Flex flex={"0 0 50%"} className={classes.parent}>
+					<Flex
+						flex={"0 0 50%"}
+						className={`${classes.speech_bubble_container} ${
+							argutiaPhase === "speaker1" ? classes.left : classes.right
+						}`}
+					>
+						{/* // TODO: ↓コンポーネント切り出し */}
 						<Box
 							w={"100%"}
 							className={`${classes.speech_bubble} ${
-								argutiaPhase === "speaker1" ? classes.left : classes.right
+								argutiaPhase !== "speaker1" && classes.direction_rtl
 							}`}
 						>
-							<Box style={{ overflowX: "hidden", overflowY: "auto" }}>
-								<Title size={"h3"} c={"var(--mantine-color-text)"}>
-									ここに発言が表示されます
-								</Title>
-							</Box>
+							<Title
+								size={"h3"}
+								c={"var(--mantine-color-text)"}
+								className={argutiaPhase !== "speaker1" ? classes.direction_ltr : ""}
+							>
+								ここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されます
+							</Title>
 						</Box>
 					</Flex>
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
