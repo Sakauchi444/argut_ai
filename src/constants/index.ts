@@ -1,1 +1,1 @@
-export const models = ["GPT-4", "Gemini", "Claude-3"]
+export const models = ["GPT-4", "Gemini", "Claude-3"];

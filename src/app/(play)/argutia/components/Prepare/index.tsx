@@ -1,10 +1,10 @@
 "use client";
 
+import { models } from "@/constants";
 import { Button, Container, Flex, Input, NativeSelect, Text, Title, rem } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React, { Dispatch, FC, SetStateAction } from "react";
 import classes from "./prepare.module.css";
-import { models } from "@/constants";
 
 type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
@@ -32,7 +32,7 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 				model: "GPT-4",
 				position: "",
 				comments: [],
-			}
+			},
 		},
 	});
 	return (

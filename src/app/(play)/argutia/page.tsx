@@ -18,7 +18,7 @@ const ArgutiaPage = () => {
 			model: "GPT-4",
 			position: "",
 			comments: [],
-		}
+		},
 	});
 
 	switch (phase) {

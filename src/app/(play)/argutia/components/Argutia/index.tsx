@@ -1,11 +1,11 @@
+import Initialize from "@/components/Features/Initialize";
+import LogOverlay from "@/components/Features/LogOverlay";
 import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction, useState } from "react";
 import { useScramble } from "use-scramble";
-import Initialize from "@/components/Features/Initialize";
 import classes from "./argutia.module.css";
-import LogOverlay from "@/components/Features/LogOverlay";
 
 type Props = {
 	data: ArgutiaData;
@@ -25,13 +25,13 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	// TODO: データに切り替える
 	const text =
 		"CSSで作成された吹き出しについての質問をありがとうございます。overflow-y: auto;を設定するとスクロールが可能になるものの、::afterで作成した吹き出しの尾部分が見えなくなってしまう問題に直面しているとのことです。この問題は、overflow-y: auto;を設定した要素内に::afterを配置しているため、スクロール可能なエリア内に吹き出しの尾が含まれてしまい、そのエリアがスクロールされると尾部分が見えなくなってしまうことに起因します。解決策の一つとして、吹き出しの尾部分を別の要素として外に出し、吹き出し本体（テキストを含む部分）とは別に配置する方法があります。こうすることで、吹き出しの本体がスクロール可能になっても、尾部分が常に表示されるようになります。以下はその実装方法の例です。CSSで作成された吹き出しについての質問をありがとうございます。overflow-y: auto;を設定するとスクロールが可能になるものの、::afterで作成した吹き出しの尾部分が見えなくなってしまう問題に直面しているとのことです。この問題は、overflow-y: auto;を設定した要素内に::afterを配置しているため、スクロール可能なエリア内に吹き出しの尾が含まれてしまい、そのエリアがスクロールされると尾部分が見えなくなってしまうことに起因します。解決策の一つとして、吹き出しの尾部分を別の要素として外に出し、吹き出し本体（テキストを含む部分）とは別に配置する方法があります。こうすることで、吹き出しの本体がスクロール可能になっても、尾部分が常に表示されるようになります。以下はその実装方法の例です。";
-	
+
 	const dummy: Speaker = {
 		model: "GPT-4",
 		position: "賛成",
 		comments: [text, `${text}2`],
-	}
-		// TODO: アニメーション開始のタイミングの調整
+	};
+	// TODO: アニメーション開始のタイミングの調整
 	const { ref } = useScramble({
 		text: text,
 		speed: 0.6 * option.playbackSpeed * (option.isPaused ? 0 : 1),
@@ -123,7 +123,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						size={"lg"}
 						w={"70px"}
 						onClick={() => {
-							setLogVisible(!logVisible)
+							setLogVisible(!logVisible);
 						}}
 					>
 						<IconMessage />
@@ -152,9 +152,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					</Center>
 				</Overlay>
 			)}
-			{logVisible && (
-				<LogOverlay speaker1={dummy} speaker2={dummy} />
-			)}
+			{logVisible && <LogOverlay speaker1={dummy} speaker2={dummy} />}
 		</div>
 	);
 };

@@ -14,8 +14,9 @@ type Speaker = {
 
 type ArgutiaPhase = "initialize" | "speaker1" | "speaker2" | "waiting";
 
+type Sections = "arguments" | "cross-examination" | "rebuttal" | "closing-arguments";
+
 type ArgutiaOption = {
 	isPaused: boolean;
 	playbackSpeed: number;
 };
-

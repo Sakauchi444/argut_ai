@@ -5,7 +5,7 @@ type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
 };
 
-const Result: FC<Props> = ({ data, setData, setPhase }) => {
+const Result: FC<Props> = ({ data, setPhase }) => {
 	return <div></div>;
 };
 
