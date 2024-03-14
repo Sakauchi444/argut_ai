@@ -2,6 +2,7 @@ import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import { useScramble } from "use-scramble";
 import Initialize from "../Initialize";
 import classes from "./argutia.module.css";
 
@@ -13,10 +14,28 @@ type Props = {
 
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
-
 	const [option, setOption] = React.useState<ArgutiaOption>({
 		isPaused: false,
 		playbackSpeed: 1,
+	});
+
+	// TODO: データに切り替える
+	const text =
+		"Hello World! CSSで作成された吹き出しについての質問をありがとうございます。overflow-y: auto;を設定するとスクロールが可能になるものの、::afterで作成した吹き出しの尾部分が見えなくなってしまう問題に直面しているとのことです。この問題は、overflow-y: auto;を設定した要素内に::afterを配置しているため、スクロール可能なエリア内に吹き出しの尾が含まれてしまい、そのエリアがスクロールされると尾部分が見えなくなってしまうことに起因します。解決策の一つとして、吹き出しの尾部分を別の要素として外に出し、吹き出し本体（テキストを含む部分）とは別に配置する方法があります。こうすることで、吹き出しの本体がスクロール可能になっても、尾部分が常に表示されるようになります。以下はその実装方法の例です。";
+	// TODO: アニメーション開始のタイミングの調整
+	const { ref } = useScramble({
+		text: text,
+		speed: 0.6 * option.playbackSpeed * (option.isPaused ? 0 : 1),
+		tick: 1,
+		step: 1,
+		seed: 0,
+		scramble: 0,
+		overflow: false,
+		overdrive: false,
+		onAnimationEnd: () => {
+			// TODO: ▽とか表示させる。または、次のフェーズに遷移する
+			console.log("Animation ended");
+		},
 	});
 
 	const handlePlaybackSpeed = () => {
@@ -29,7 +48,6 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	if (argutiaPhase === "initialize") {
 		return <Initialize setArgutiaPhase={setArgutiaPhase} />;
 	}
-
 	return (
 		<div className={classes.root}>
 			<Container component={Flex} size={"lg"} h={"100%"} style={{ flexDirection: "column" }}>
@@ -57,7 +75,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							argutiaPhase === "speaker1" ? classes.left : classes.right
 						}`}
 					>
-						{/* // TODO: ↓コンポーネント切り出し */}
+						{/* // TODO: ↓吹き出しコンポーネント切り出し */}
 						<Box
 							w={"100%"}
 							className={`${classes.speech_bubble} ${
@@ -67,10 +85,11 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							<Title
 								size={"h3"}
 								c={"var(--mantine-color-text)"}
-								className={argutiaPhase !== "speaker1" ? classes.direction_ltr : ""}
-							>
-								ここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されますここに発言が表示されます
-							</Title>
+								className={`
+									${argutiaPhase !== "speaker1" && classes.direction_ltr}
+								`}
+								ref={ref}
+							/>
 						</Box>
 					</Flex>
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
