@@ -9,12 +9,16 @@ const ArgutiaPage = () => {
 	const [phase, setPhase] = React.useState<Phase>("prepare");
 	const [data, setData] = React.useState<ArgutiaData>({
 		agenda: "",
-		speaker1: "GPT-4",
-		speaker2: "GPT-4",
-		position1: "",
-		position2: "",
-		speaker1_comments: [],
-		speaker2_comments: [],
+		speaker1: {
+			model: "GPT-4",
+			position: "",
+			comments: [],
+		},
+		speaker2: {
+			model: "GPT-4",
+			position: "",
+			comments: [],
+		}
 	});
 
 	switch (phase) {

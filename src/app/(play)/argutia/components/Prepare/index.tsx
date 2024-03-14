@@ -4,8 +4,7 @@ import { Button, Container, Flex, Input, NativeSelect, Text, Title, rem } from "
 import { useForm } from "@mantine/form";
 import React, { Dispatch, FC, SetStateAction } from "react";
 import classes from "./prepare.module.css";
-
-const MODELS = ["GPT-4", "Gemini", "Claude-3"];
+import { models } from "@/constants";
 
 type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
@@ -13,21 +12,27 @@ type Props = {
 };
 
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
-	const handleSubmit = (data: SubmitData) => {
-		setData({ ...data, speaker1_comments: [], speaker2_comments: [] });
+	const handleSubmit = (data: ArgutiaData) => {
+		setData({ ...data });
 		setPhase("argutia");
 		// TODO: ここでデータを送信する
 		console.log(data);
 		// TODO: 復元の開始フラグを立てる
 	};
 
-	const form = useForm<SubmitData>({
+	const form = useForm<ArgutiaData>({
 		initialValues: {
 			agenda: "",
-			speaker1: "GPT-4",
-			speaker2: "GPT-4",
-      position1: "",
-      position2: "",
+			speaker1: {
+				model: "GPT-4",
+				position: "",
+				comments: [],
+			},
+			speaker2: {
+				model: "GPT-4",
+				position: "",
+				comments: [],
+			}
 		},
 	});
 	return (
@@ -54,15 +59,15 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 									miw={"200px"}
 									placeholder="例: きの〇の山"
 									required
-									{...form.getInputProps("position1")}
+									{...form.getInputProps("speaker1.position")}
 								/>
 							</Input.Wrapper>
 							<NativeSelect
 								label={"使用するモデル1"}
-								data={MODELS}
+								data={models}
 								classNames={{ label: classes.label }}
 								flex={"1"}
-								{...form.getInputProps("speaker1")}
+								{...form.getInputProps("speaker1.model")}
 							/>
 						</Flex>
 						<Flex justify={"center"}>
@@ -83,18 +88,20 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 									miw={"200px"}
 									placeholder="例: た〇のこの里"
 									required
-									{...form.getInputProps("position2")}
+									{...form.getInputProps("speaker2.position")}
 								/>
 							</Input.Wrapper>
 							<NativeSelect
 								label={"使用するモデル2"}
-								data={MODELS}
+								data={models}
 								classNames={{ label: classes.label }}
 								flex={"1"}
-								{...form.getInputProps("speaker2")}
+								{...form.getInputProps("speaker2.model")}
 							/>
 						</Flex>
-						<Button type="submit" variant="gradient" gradient={{ from: "pink", to: "yellow" }}>作成する</Button>
+						<Button type="submit" variant="gradient" gradient={{ from: "pink", to: "yellow" }}>
+							作成する
+						</Button>
 					</Flex>
 				</form>
 			</Container>
