@@ -1,5 +1,6 @@
 import Initialize from "@/components/Features/Initialize";
 import LogOverlay from "@/components/Features/LogOverlay";
+import WaitOverlay from "@/components/Features/WaitOverlay";
 import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
@@ -34,7 +35,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	// TODO: アニメーション開始のタイミングの調整
 	const { ref } = useScramble({
 		text: text,
-		speed: 0.6 * option.playbackSpeed * (option.isPaused ? 0 : 1),
+		speed: 0.4 * option.playbackSpeed * (option.isPaused ? 0 : 1),
 		tick: 1,
 		step: 1,
 		seed: 0,
@@ -153,6 +154,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 				</Overlay>
 			)}
 			{logVisible && <LogOverlay speaker1={dummy} speaker2={dummy} />}
+			{argutiaPhase === "waiting" && <WaitOverlay />}
 		</div>
 	);
 };
