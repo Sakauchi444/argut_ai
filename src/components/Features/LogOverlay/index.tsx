@@ -30,13 +30,13 @@ const LogOverlay: FC<Props> = ({ speaker1, speaker2 }) => {
 							{speaker2.comments[index] && (
 								<Paper key={speaker2.comments[index]}>
 									<Flex gap={"md"} p="md">
-										<Image
+										<Text c={"black"}>{speaker2.comments[index]}</Text>
+                    <Image
 											src={"/images/zunda_icon.png"}
 											alt={`${speaker1.position} icon`}
 											height={50}
 											width={50}
 										/>
-										<Text c={"black"}>{speaker2.comments[index]}</Text>
 									</Flex>
 								</Paper>
 							)}
