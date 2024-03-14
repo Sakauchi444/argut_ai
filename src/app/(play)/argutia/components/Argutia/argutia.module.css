@@ -68,9 +68,6 @@
   max-height: calc(100vh - var(--mantine-spacing-xl) * 6 - 48px);
   overflow-y: auto;
   overflow-x: visible;
-  * {
-    color: var(--mantine-color-black);
-  }
 }
 
 .speech_bubble_container.left {
@@ -93,6 +90,7 @@
 
 .text {
   position: relative;
+  padding-bottom: 1em;
   &::after {
     content: "";
     display: block;

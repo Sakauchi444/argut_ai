@@ -14,8 +14,8 @@ const initialize: FC<Props> = ({ setArgutiaPhase }) => {
 	useEffect(() => {
 		const timerId = setInterval(() => {
 			setPhraseIndex(Math.floor(Math.random() * LoadingPhrases.length));
-
-			setArgutiaPhase("speaker1"); // TODO: 後で消す
+			// TODO: レスポンスを受け取ったら次のフェーズに遷移
+			setArgutiaPhase("speaker1-arguments");
 		}, 5000); // 5秒ごとにフレーズを更新
 
 		return () => clearInterval(timerId);

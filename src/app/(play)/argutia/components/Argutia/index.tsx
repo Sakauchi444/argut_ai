@@ -1,10 +1,11 @@
 import Initialize from "@/components/Features/Initialize";
 import LogOverlay from "@/components/Features/LogOverlay";
 import WaitOverlay from "@/components/Features/WaitOverlay";
+import { PhaseTitles, Phases } from "@/constants";
 import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { useScramble } from "use-scramble";
 import classes from "./argutia.module.css";
 
@@ -14,8 +15,9 @@ type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
 };
 
-const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
+const Argutia: FC<Props> = ({ _data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
+	const [readIndex, setReadIndex] = useState(0);
 	const [logVisible, setLogVisible] = useState(false);
 	const [end, setEnd] = useState(false);
 	const [option, setOption] = React.useState<ArgutiaOption>({
@@ -23,17 +25,48 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		playbackSpeed: 1,
 	});
 
+	useEffect(() => {
+		if (argutiaPhase === "speaker1-arguments") {
+			setReadIndex(0);
+		} else if (argutiaPhase === "speaker2-arguments") {
+			setReadIndex(1);
+		} else if (argutiaPhase === "speaker1-rebuttal") {
+			setReadIndex(2);
+		} else if (argutiaPhase === "speaker1-closing-arguments") {
+			setReadIndex(3);
+		}
+		return () => setReadIndex(0);
+	}, [argutiaPhase]);
+
+	const handleNextPhase = () => {
+		setArgutiaPhase((prev) => Phases[Phases.indexOf(prev) + 1] || Phases[0]);
+		setEnd(false);
+	};
+	const PhaseTitle = PhaseTitles[argutiaPhase];
+
+	const isSpeaker1 = /^speaker1/.test(argutiaPhase);
+
 	// TODO: データに切り替える
 	const text =
-		"CSSで作成された吹き出しについての質問をありがとうございます。overflow-y: auto;を設定するとスクロールが可能になるものの、::afterで作成した吹き出しの尾部分が見えなくなってしまう問題に直面しているとのことです。この問題は、overflow-y: auto;を設定した要素内に::afterを配置しているため、スクロール可能なエリア内に吹き出しの尾が含まれてしまい、そのエリアがスクロールされると尾部分が見えなくなってしまうことに起因します。解決策の一つとして、吹き出しの尾部分を別の要素として外に出し、吹き出し本体（テキストを含む部分）とは別に配置する方法があります。こうすることで、吹き出しの本体がスクロール可能になっても、尾部分が常に表示されるようになります。以下はその実装方法の例です。CSSで作成された吹き出しについての質問をありがとうございます。overflow-y: auto;を設定するとスクロールが可能になるものの、::afterで作成した吹き出しの尾部分が見えなくなってしまう問題に直面しているとのことです。この問題は、overflow-y: auto;を設定した要素内に::afterを配置しているため、スクロール可能なエリア内に吹き出しの尾が含まれてしまい、そのエリアがスクロールされると尾部分が見えなくなってしまうことに起因します。解決策の一つとして、吹き出しの尾部分を別の要素として外に出し、吹き出し本体（テキストを含む部分）とは別に配置する方法があります。こうすることで、吹き出しの本体がスクロール可能になっても、尾部分が常に表示されるようになります。以下はその実装方法の例です。";
-
-	const dummy: Speaker = {
-		model: "GPT-4",
-		position: "賛成",
-		comments: [text, `${text}2`],
+		"空が青く見える理由は主に以下の2点です。\n\n1. 光の散乱現象\n太陽光が大気中の分子や微小な粒子に当たって散乱される際、短波長の青い光線はより強く散乱される性質があるため、目に入る光の主体が青味を帯びた光になります。\n\n2. 酸素分子\n大気中に含まれる酸素分子は、赤外線領域の波長の光を吸収しやすく、青~緑方向の短波長の光を透過しやすい特性があります。\n\nつまり、空は青く見えるのは、大気中を進む光が短波長の青い光を選択的に散乱・透過する性質に起因している、というのが通説です。ただし晴れた空の青さは、時間や位置によって若干異なります。";
+	const data: ArgutiaData = {
+		agenda: "空が青い理由",
+		speaker1: {
+			model: "GPT-4",
+			position: "賛成",
+			comments: [`賛成: ${text}`, `賛成: ${text}2`, `賛成: ${text}3`, `賛成: ${text}4`],
+		},
+		speaker2: {
+			model: "GPT-4",
+			position: "反対",
+			comments: [`反対${text}`, `反対: ${text}2`, `反対${text}3`, `反対${text}4`],
+		},
 	};
-	const { ref } = useScramble({
-		text: text,
+	const readtext = isSpeaker1
+		? data.speaker1.comments[readIndex]
+		: data.speaker2.comments[readIndex];
+	const { ref, replay } = useScramble({
+		text: readtext,
 		speed: 0.4 * option.playbackSpeed * (option.isPaused || argutiaPhase === "initialize" ? 0 : 1),
 		tick: 1,
 		step: 1,
@@ -41,6 +74,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		scramble: 0,
 		overflow: false,
 		overdrive: false,
+		onAnimationStart: () => {
+			setEnd(false);
+		},
 		onAnimationEnd: () => {
 			setEnd(true);
 		},
@@ -62,7 +98,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 				{/* // TODO: ↓コンポーネント切り出し */}
 				<Box mb={"md"}>
 					<Title>議題: {data.agenda}</Title>
-					<Title size={"h4"}>フェーズ: {argutiaPhase}</Title>
+					<Title size={"h4"}>
+						フェーズ {isSpeaker1 ? data.speaker1.position : data.speaker2.position}-{PhaseTitle}
+					</Title>
 				</Box>
 				<Flex flex={1}>
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
@@ -81,7 +119,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						flex={"1 0 50%"}
 						className={`
 							${classes.speech_bubble_container}
-							${argutiaPhase === "speaker1" ? classes.left : classes.right}
+							${isSpeaker1 ? classes.left : classes.right}
 						`}
 					>
 						{/* // TODO: ↓吹き出しコンポーネント切り出し */}
@@ -89,7 +127,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							w={"100%"}
 							className={`
 								${classes.speech_bubble} 
-								${argutiaPhase !== "speaker1" && classes.direction_rtl}
+								${!isSpeaker1 && classes.direction_rtl}
 								${classes.scrollbar}
 							`}
 						>
@@ -98,10 +136,35 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 								c={"var(--mantine-color-text)"}
 								className={`
 									${end && classes.text}
-									${argutiaPhase !== "speaker1" && classes.direction_ltr}
+									${!isSpeaker1 && classes.direction_ltr}
 								`}
 								ref={ref}
 							/>
+							{end && (
+								<Flex
+									justify={"space-around"}
+									className={`${!isSpeaker1 && classes.direction_ltr}`}
+								>
+									<Button
+										variant="gradient"
+										gradient={{ from: "pink", to: "yellow" }}
+										c={"var(--mantine-color-white)"}
+										onClick={replay}
+										size={"lg"}
+									>
+										もう一度
+									</Button>
+									<Button
+										variant="gradient"
+										gradient={{ from: "pink", to: "yellow" }}
+										c={"var(--mantine-color-white)"}
+										size="lg"
+										onClick={handleNextPhase}
+									>
+										{argutiaPhase === "speaker2-closing-arguments" ? "終了する" : "次へ進む"}
+									</Button>
+								</Flex>
+							)}
 						</Box>
 					</Flex>
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
@@ -154,7 +217,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					</Center>
 				</Overlay>
 			)}
-			{logVisible && <LogOverlay speaker1={dummy} speaker2={dummy} />}
+			{logVisible && <LogOverlay speaker1={data.speaker1} speaker2={data.speaker2} />}
 			{argutiaPhase === "waiting" && <WaitOverlay />}
 		</div>
 	);
