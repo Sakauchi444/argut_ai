@@ -1,0 +1,52 @@
+.container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.stack {
+  overflow-y: scroll;
+  height: calc(100vh - 160px);
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #1bb4d3), to(#1bd8d3));
+    background: linear-gradient(to bottom, var(--mantine-color-yellow-filled) 50%, var(--mantine-color-pink-filled));
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #dcdcdc;
+  }
+}
+
+.speech_bubble {
+  display: inline-block;  
+  padding: var(--mantine-spacing-md);
+  background: white;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  max-height: calc(100vh - var(--mantine-spacing-xl) * 6 - 48px);
+  overflow-y: auto;
+  overflow-x: visible;
+  * {
+    color: var(--mantine-color-black);
+  }
+}
+
+.speech_bubble_container {
+  position: relative;
+  margin: 0 var(--mantine-spacing-xl);
+  float: left;
+  &::after {
+    z-index: 1;
+    position: absolute;
+    content: "";
+    width: 26px;
+    height: 26px;
+    top: 30%;
+    left: -24px;
+    border-radius: 0 0px 10px 16px;
+    box-shadow: -10px -18px 0 -8px white inset;
+  }
+}
