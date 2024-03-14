@@ -5,7 +5,7 @@
 
 .stack {
   overflow-y: scroll;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 154px);
   &::-webkit-scrollbar {
     width: 7px;
   }

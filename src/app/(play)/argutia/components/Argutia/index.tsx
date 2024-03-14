@@ -32,10 +32,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		position: "賛成",
 		comments: [text, `${text}2`],
 	};
-	// TODO: アニメーション開始のタイミングの調整
 	const { ref } = useScramble({
 		text: text,
-		speed: 0.4 * option.playbackSpeed * (option.isPaused ? 0 : 1),
+		speed: 0.4 * option.playbackSpeed * (option.isPaused || argutiaPhase === "initialize" ? 0 : 1),
 		tick: 1,
 		step: 1,
 		seed: 0,
@@ -61,7 +60,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		<div className={classes.root}>
 			<Container component={Flex} size={"lg"} h={"100%"} style={{ flexDirection: "column" }}>
 				{/* // TODO: ↓コンポーネント切り出し */}
-				<Box>
+				<Box mb={"md"}>
 					<Title>議題: {data.agenda}</Title>
 					<Title size={"h4"}>フェーズ: {argutiaPhase}</Title>
 				</Box>
@@ -79,15 +78,17 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						</Title>
 					</Flex>
 					<Flex
-						flex={"0 0 50%"}
-						className={`${classes.speech_bubble_container} ${
-							argutiaPhase === "speaker1" ? classes.left : classes.right
-						}`}
+						flex={"1 0 50%"}
+						className={`
+							${classes.speech_bubble_container}
+							${argutiaPhase === "speaker1" ? classes.left : classes.right}
+						`}
 					>
 						{/* // TODO: ↓吹き出しコンポーネント切り出し */}
 						<Box
 							w={"100%"}
-							className={`${classes.speech_bubble} 
+							className={`
+								${classes.speech_bubble} 
 								${argutiaPhase !== "speaker1" && classes.direction_rtl}
 								${classes.scrollbar}
 							`}
