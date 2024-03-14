@@ -3,8 +3,9 @@ import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-reac
 import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction, useState } from "react";
 import { useScramble } from "use-scramble";
-import Initialize from "../Initialize";
+import Initialize from "@/components/Features/Initialize";
 import classes from "./argutia.module.css";
+import LogOverlay from "@/components/Features/LogOverlay";
 
 type Props = {
 	data: ArgutiaData;
@@ -14,6 +15,8 @@ type Props = {
 
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
+	const [logVisible, setLogVisible] = useState(false);
+	const [end, setEnd] = useState(false);
 	const [option, setOption] = React.useState<ArgutiaOption>({
 		isPaused: false,
 		playbackSpeed: 1,
@@ -33,8 +36,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		overflow: false,
 		overdrive: false,
 		onAnimationEnd: () => {
-			// TODO: ▽とか表示させる。または、次のフェーズに遷移する
-			console.log("Animation ended");
+			setEnd(true);
 		},
 	});
 
@@ -66,7 +68,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
 						/>
 						<Title>
-							{data.position1}: {data.speaker1}
+							{data.speaker1.position}: {data.speaker1.model}
 						</Title>
 					</Flex>
 					<Flex
@@ -86,6 +88,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 								size={"h3"}
 								c={"var(--mantine-color-text)"}
 								className={`
+									${end && classes.text}
 									${argutiaPhase !== "speaker1" && classes.direction_ltr}
 								`}
 								ref={ref}
@@ -101,7 +104,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							style={{ objectFit: "contain" }}
 						/>
 						<Title>
-							{data.position2}: {data.speaker2}
+							{data.speaker2.position}: {data.speaker2.model}
 						</Title>
 					</Flex>
 				</Flex>
@@ -112,6 +115,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						gradient={{ from: "pink", to: "yellow" }}
 						size={"lg"}
 						w={"70px"}
+						onClick={() => {
+							setLogVisible(!logVisible)
+						}}
 					>
 						<IconMessage />
 					</ActionIcon>
@@ -138,6 +144,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						<Title>Paused</Title>
 					</Center>
 				</Overlay>
+			)}
+			{logVisible && (
+				<LogOverlay speaker1={data.speaker1} speaker2={data.speaker2} />
 			)}
 		</div>
 	);
