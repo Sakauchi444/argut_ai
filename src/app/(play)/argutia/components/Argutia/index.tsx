@@ -30,9 +30,9 @@ const Argutia: FC<Props> = ({ _data, setData, setPhase }) => {
 			setReadIndex(0);
 		} else if (argutiaPhase === "speaker2-arguments") {
 			setReadIndex(1);
-		} else if (argutiaPhase === "speaker1-rebuttal") {
+		} else if (argutiaPhase === "speaker2-rebuttal") {
 			setReadIndex(2);
-		} else if (argutiaPhase === "speaker1-closing-arguments") {
+		} else if (argutiaPhase === "speaker2-closing-arguments") {
 			setReadIndex(3);
 		}
 		return () => setReadIndex(0);
