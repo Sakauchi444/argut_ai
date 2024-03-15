@@ -1,3 +1,4 @@
+import EndOverlay from "@/components/Features/EndOverlay";
 import Initialize from "@/components/Features/Initialize";
 import LogOverlay from "@/components/Features/LogOverlay";
 import WaitOverlay from "@/components/Features/WaitOverlay";
@@ -34,13 +35,25 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			setReadIndex(2);
 		} else if (argutiaPhase === "speaker2-closing-arguments") {
 			setReadIndex(3);
+		} else if (argutiaPhase === "end") {
+			setTimeout(() => {
+				// アニメーション見せてからリザルトに移行
+				setPhase("result");
+			}, 5000);
 		}
 		return () => setReadIndex(0);
-	}, [argutiaPhase]);
+	}, [argutiaPhase, setPhase]);
 
 	const handleNextPhase = () => {
-		setArgutiaPhase((prev) => Phases[Phases.indexOf(prev) + 1] || Phases[0]);
 		setEnd(false);
+		if (argutiaPhase === "speaker2-cross-examination") {
+			setReadIndex(1);
+		} else if (argutiaPhase === "speaker1-cross-examination") {
+			setReadIndex(2);
+		} else if (argutiaPhase === "speaker2-rebuttal") {
+			setReadIndex(3);
+		}
+		setArgutiaPhase((prev) => Phases[Phases.indexOf(prev) + 1] || Phases[0]);
 	};
 	const PhaseTitle = PhaseTitles[argutiaPhase];
 
@@ -63,12 +76,19 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			comments: [`反対${text}`, `反対: ${text}2`, `反対${text}3`, `反対${text}4`],
 		},
 	};
-	const readText = isSpeaker1
-		? _data.speaker1.comments[readIndex]
-		: _data.speaker2.comments[readIndex];
+	const readText =
+		argutiaPhase === "end"
+			? ""
+			: isSpeaker1
+			  ? _data.speaker1.comments[readIndex]
+			  : _data.speaker2.comments[readIndex];
+
 	const { ref, replay } = useScramble({
 		text: readText,
-		speed: 0.4 * option.playbackSpeed * (option.isPaused || argutiaPhase === "initialize" ? 0 : 1),
+		speed:
+			0.4 *
+			option.playbackSpeed *
+			(option.isPaused || argutiaPhase === "initialize" || argutiaPhase === "end" ? 0 : 1),
 		tick: 1,
 		step: 1,
 		seed: 0,
@@ -97,21 +117,23 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 		<div className={classes.root}>
 			<Container component={Flex} size={"lg"} h={"100%"} p={0} style={{ flexDirection: "column" }}>
 				{/* // TODO: ↓コンポーネント切り出し */}
-				<Box mb={"md"}>
+				<Box mb={"md"} px={"md"}>
 					<Title>議題: {_data.agenda}</Title>
 					<Title size={"h4"}>
 						フェーズ {isSpeaker1 ? _data.speaker1.position : _data.speaker2.position}-{PhaseTitle}
 					</Title>
 				</Box>
 				<Flex flex={1}>
-					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
-						<Image
-							src={"/images/ずんだもん_0001.png"}
-							alt={"Player1"}
-							fill
-							sizes="25%"
-							style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
-						/>
+					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative" pl={"sm"}>
+						<Box pos="relative" flex={"1 1 90%"}>
+							<Image
+								src={"/images/ずんだもん_0001.png"}
+								alt={"Player1"}
+								fill
+								sizes="25%"
+								style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
+							/>
+						</Box>
 						<Title>
 							{_data.speaker1.position}: {_data.speaker1.model}
 						</Title>
@@ -168,14 +190,16 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							)}
 						</Box>
 					</Flex>
-					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative">
-						<Image
-							src={"/images/ずんだもん_0001.png"}
-							alt={"Player2"}
-							fill
-							sizes="25%"
-							style={{ objectFit: "contain" }}
-						/>
+					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pr={"md"}>
+						<Box pos="relative" flex={"1 1 90%"}>
+							<Image
+								src={"/images/ずんだもん_0001.png"}
+								alt={"Player2"}
+								fill
+								sizes="25%"
+								style={{ objectFit: "contain" }}
+							/>
+						</Box>
 						<Title>
 							{_data.speaker2.position}: {_data.speaker2.model}
 						</Title>
@@ -220,6 +244,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			)}
 			{logVisible && <LogOverlay speaker1={_data.speaker1} speaker2={_data.speaker2} />}
 			{argutiaPhase === "waiting" && <WaitOverlay />}
+			{argutiaPhase === "end" && <EndOverlay />}
 		</div>
 	);
 };
