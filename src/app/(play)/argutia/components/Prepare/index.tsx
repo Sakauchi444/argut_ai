@@ -43,7 +43,7 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 						<Title c={"var(--mantine-color-white)"} size={"h2"}>
 							新しい議論を始めましょう
 						</Title>
-						<Box w={"100%"} mb={"md"}>
+						<Box mb={"md"} w={"32rem"} maw={"100%"}>
 							<Input.Wrapper label="議題" withAsterisk classNames={{ label: classes.label }}>
 								<Input
 									size={"lg"}
