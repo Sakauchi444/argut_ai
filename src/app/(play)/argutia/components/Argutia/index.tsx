@@ -49,6 +49,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	// TODO: データに切り替える
 	const text =
 		"空が青く見える理由は主に以下の2点です。\n\n1. 光の散乱現象\n太陽光が大気中の分子や微小な粒子に当たって散乱される際、短波長の青い光線はより強く散乱される性質があるため、目に入る光の主体が青味を帯びた光になります。\n\n2. 酸素分子\n大気中に含まれる酸素分子は、赤外線領域の波長の光を吸収しやすく、青~緑方向の短波長の光を透過しやすい特性があります。\n\nつまり、空は青く見えるのは、大気中を進む光が短波長の青い光を選択的に散乱・透過する性質に起因している、というのが通説です。ただし晴れた空の青さは、時間や位置によって若干異なります。";
+
 	const _data: ArgutiaData = {
 		agenda: "空が青い理由",
 		speaker1: {
@@ -94,7 +95,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	}
 	return (
 		<div className={classes.root}>
-			<Container component={Flex} size={"lg"} h={"100%"} style={{ flexDirection: "column" }}>
+			<Container component={Flex} size={"lg"} h={"100%"} p={0} style={{ flexDirection: "column" }}>
 				{/* // TODO: ↓コンポーネント切り出し */}
 				<Box mb={"md"}>
 					<Title>議題: {_data.agenda}</Title>
@@ -116,7 +117,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						</Title>
 					</Flex>
 					<Flex
-						flex={"1 0 50%"}
+						flex={"0 1 50%"}
 						className={`
 							${classes.speech_bubble_container}
 							${isSpeaker1 ? classes.left : classes.right}

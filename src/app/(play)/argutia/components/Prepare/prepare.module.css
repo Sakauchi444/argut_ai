@@ -10,6 +10,16 @@
   width: 100vw;
 }
 
+.speaker {
+  display: flex;
+  align-items: stretch;
+  gap: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    flex-direction: column;
+  }
+}
+
 .label {
   color: var(--mantine-color-white);
 }
