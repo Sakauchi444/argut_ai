@@ -6,7 +6,7 @@ export const bots: Record<Model, string> = {
 	"Llama-2": "acouchy",
 	"Claude-2": "claude_2_short",
 	"Claude-3": "claude_2_1_cedar",
-}
+};
 
 export const LoadingPhrases = [
 	"AIがストレッチをしています...",
@@ -53,4 +53,3 @@ export const PhaseTitles: Record<ArgutiaPhase, string> = {
 	end: "終了",
 	waiting: "待機中",
 };
-

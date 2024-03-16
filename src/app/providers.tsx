@@ -1,5 +1,3 @@
-
-
 import { MantineProvider, createTheme } from "@mantine/core";
 import React from "react";
 
@@ -19,8 +17,7 @@ const theme = createTheme({
 				c: "var(--mantine-color-white)",
 			},
 		},
-		
-	}
+	},
 });
 
 const Providers = ({

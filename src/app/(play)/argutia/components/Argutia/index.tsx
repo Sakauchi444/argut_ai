@@ -205,9 +205,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					>
 						{option.isPaused ? <IconPlayerPlay /> : <IconPlayerPause />}
 					</ActionIcon>
-					<Button onClick={handlePlaybackSpeed} w={"70px"}>{`x${option.playbackSpeed.toFixed(
-						1,
-					)}`}</Button>
+					<Button onClick={handlePlaybackSpeed} w={"70px"}>
+						{`x${option.playbackSpeed.toFixed(1)}`}
+					</Button>
 				</Flex>
 			</Container>
 			{option.isPaused && (
