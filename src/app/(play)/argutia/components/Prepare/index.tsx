@@ -103,7 +103,7 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 								/>
 							</Flex>
 						</Box>
-						<Button type="submit" variant="gradient" gradient={{ from: "pink", to: "yellow" }}>
+						<Button type="submit">
 							作成する
 						</Button>
 					</Flex>

@@ -1,7 +1,27 @@
+
+
 import { MantineProvider, createTheme } from "@mantine/core";
 import React from "react";
 
-const theme = createTheme({});
+const theme = createTheme({
+	components: {
+		Button: {
+			defaultProps: {
+				variant: "gradient",
+				gradient: { from: "pink", to: "yellow" },
+				c: "var(--mantine-color-white)",
+			},
+		},
+		ActionIcon: {
+			defaultProps: {
+				variant: "gradient",
+				gradient: { from: "pink", to: "yellow" },
+				c: "var(--mantine-color-white)",
+			},
+		},
+		
+	}
+});
 
 const Providers = ({
 	children,

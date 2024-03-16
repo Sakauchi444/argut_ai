@@ -169,18 +169,12 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 									className={`${!isSpeaker1 && classes.direction_ltr}`}
 								>
 									<Button
-										variant="gradient"
-										gradient={{ from: "pink", to: "yellow" }}
-										c={"var(--mantine-color-white)"}
 										onClick={replay}
 										size={"lg"}
 									>
 										もう一度
 									</Button>
 									<Button
-										variant="gradient"
-										gradient={{ from: "pink", to: "yellow" }}
-										c={"var(--mantine-color-white)"}
 										size="lg"
 										onClick={handleNextPhase}
 									>
@@ -208,8 +202,6 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 				{/* TODO: ↓コンポーネント切り出し */}
 				<Flex justify={"space-around"} className={classes.menu}>
 					<ActionIcon
-						variant="gradient"
-						gradient={{ from: "pink", to: "yellow" }}
 						size={"lg"}
 						w={"70px"}
 						onClick={() => {
@@ -219,8 +211,6 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						<IconMessage />
 					</ActionIcon>
 					<ActionIcon
-						variant="gradient"
-						gradient={{ from: "pink", to: "yellow" }}
 						size={"lg"}
 						w={"70px"}
 						onClick={() => setOption({ ...option, isPaused: !option.isPaused })}
@@ -228,8 +218,6 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						{option.isPaused ? <IconPlayerPlay /> : <IconPlayerPause />}
 					</ActionIcon>
 					<Button
-						variant="gradient"
-						gradient={{ from: "pink", to: "yellow" }}
 						onClick={handlePlaybackSpeed}
 						w={"70px"}
 					>{`x${option.playbackSpeed.toFixed(1)}`}</Button>

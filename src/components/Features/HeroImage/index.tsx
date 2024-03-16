@@ -28,8 +28,6 @@ export function HeroImage() {
 						<Flex gap={20} mt={40} direction={{ md: "row", base: "column" }}>
 							<Link href="/argutia">
 								<Button
-									variant="gradient"
-									gradient={{ from: "pink", to: "yellow" }}
 									size="xl"
 									className={classes.control}
 								>
@@ -38,8 +36,6 @@ export function HeroImage() {
 							</Link>
 							<Link href="/argutia/search">
 								<Button
-									variant="gradient"
-									gradient={{ from: "pink", to: "yellow" }}
 									size="xl"
 									className={classes.control}
 								>
