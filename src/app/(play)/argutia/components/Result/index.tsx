@@ -36,7 +36,7 @@ const Result: FC<Props> = ({ data, setPhase }) => {
 							{`${data.speaker1.position} 勝ち!!`}
 						</Text>
 					</Flex>
-					<Flex align={"center"} mah={"calc(100vh - 244px)"}>
+					<Flex align={"center"} mah={"calc(100vh - 244px)"} gap={"xl"}>
 						<Box>
 							<Image
 								src={"/images/zunda_icon.png"}

@@ -1,12 +1,11 @@
 .speech_bubble_container {
   position: relative;
-  margin: 0 var(--mantine-spacing-xl);
   &::after {
     position: absolute;
     content: "";
     width: 26px;
     height: 26px;
-    top: 30%;
+    top: 50%;
   }
 }
 
@@ -37,6 +36,7 @@
 }
 
 .speech_bubble {
+  height: 100%;
   display: inline-block;  
   padding: var(--mantine-spacing-md);
   background: white;

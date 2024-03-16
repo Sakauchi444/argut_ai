@@ -1,3 +1,4 @@
+import SpeechBubble from "@/components/Atoms/SpeechBubble";
 import EndOverlay from "@/components/Features/EndOverlay";
 import Initialize from "@/components/Features/Initialize";
 import LogOverlay from "@/components/Features/LogOverlay";
@@ -123,7 +124,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					</Title>
 				</Box>
 				<Flex flex={1}>
-					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pos="relative" pl={"sm"}>
+					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pl={"sm"} ta={"center"}>
 						<Box pos="relative" flex={"1 1 90%"}>
 							<Image
 								src={"/images/ずんだもん_0001.png"}
@@ -137,47 +138,28 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 							{_data.speaker1.position}: {_data.speaker1.model}
 						</Title>
 					</Flex>
-					<Flex
-						flex={"0 1 50%"}
-						className={`
-							${classes.speech_bubble_container}
-							${isSpeaker1 ? classes.left : classes.right}
-						`}
-					>
-						{/* // TODO: ↓吹き出しコンポーネント切り出し */}
-						<Box
-							w={"100%"}
+					<SpeechBubble direction={isSpeaker1 ? "left" : "right"} style={{ flex: "1 0 50%" }}>
+						<Title
+							size={"h3"}
+							c={"var(--mantine-color-text)"}
 							className={`
-								${classes.speech_bubble}
-								${!isSpeaker1 && classes.direction_rtl}
-								${classes.scrollbar}
-							`}
-						>
-							<Title
-								size={"h3"}
-								c={"var(--mantine-color-text)"}
-								className={`
 									${end && classes.text}
 									${!isSpeaker1 && classes.direction_ltr}
 								`}
-								ref={ref}
-							/>
-							{end && (
-								<Flex
-									justify={"space-around"}
-									className={`${!isSpeaker1 && classes.direction_ltr}`}
-								>
-									<Button onClick={replay} size={"lg"}>
-										もう一度
-									</Button>
-									<Button size="lg" onClick={handleNextPhase}>
-										{argutiaPhase === "speaker1-closing-arguments" ? "終了する" : "次へ進む"}
-									</Button>
-								</Flex>
-							)}
-						</Box>
-					</Flex>
-					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pr={"md"}>
+							ref={ref}
+						/>
+						{end && (
+							<Flex justify={"space-around"} className={`${!isSpeaker1 && classes.direction_ltr}`}>
+								<Button onClick={replay} size={"lg"}>
+									もう一度
+								</Button>
+								<Button size="lg" onClick={handleNextPhase}>
+									{argutiaPhase === "speaker1-closing-arguments" ? "終了する" : "次へ進む"}
+								</Button>
+							</Flex>
+						)}
+					</SpeechBubble>
+					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pr={"md"} ta={"center"}>
 						<Box pos="relative" flex={"1 1 90%"}>
 							<Image
 								src={"/images/ずんだもん_0001.png"}
