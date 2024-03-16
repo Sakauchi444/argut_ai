@@ -19,7 +19,6 @@ type Props = {
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
 	const [readIndex, setReadIndex] = useState(0);
-	const [logVisible, setLogVisible] = useState(false);
 	const [end, setEnd] = useState(false);
 	const [option, setOption] = React.useState<ArgutiaOption>({
 		isPaused: false,
@@ -39,7 +38,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			setTimeout(() => {
 				// アニメーション見せてからリザルトに移行
 				setPhase("result");
-			}, 5000);
+			}, 4000);
 		}
 		return () => setReadIndex(0);
 	}, [argutiaPhase, setPhase]);
@@ -149,7 +148,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 						<Box
 							w={"100%"}
 							className={`
-								${classes.speech_bubble} 
+								${classes.speech_bubble}
 								${!isSpeaker1 && classes.direction_rtl}
 								${classes.scrollbar}
 							`}
@@ -168,16 +167,10 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 									justify={"space-around"}
 									className={`${!isSpeaker1 && classes.direction_ltr}`}
 								>
-									<Button
-										onClick={replay}
-										size={"lg"}
-									>
+									<Button onClick={replay} size={"lg"}>
 										もう一度
 									</Button>
-									<Button
-										size="lg"
-										onClick={handleNextPhase}
-									>
+									<Button size="lg" onClick={handleNextPhase}>
 										{argutiaPhase === "speaker1-closing-arguments" ? "終了する" : "次へ進む"}
 									</Button>
 								</Flex>
@@ -201,15 +194,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
 				<Flex justify={"space-around"} className={classes.menu}>
-					<ActionIcon
-						size={"lg"}
-						w={"70px"}
-						onClick={() => {
-							setLogVisible(!logVisible);
-						}}
-					>
+					<LogOverlay speaker1={_data.speaker1} speaker2={_data.speaker2}>
 						<IconMessage />
-					</ActionIcon>
+					</LogOverlay>
 					<ActionIcon
 						size={"lg"}
 						w={"70px"}
@@ -217,10 +204,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					>
 						{option.isPaused ? <IconPlayerPlay /> : <IconPlayerPause />}
 					</ActionIcon>
-					<Button
-						onClick={handlePlaybackSpeed}
-						w={"70px"}
-					>{`x${option.playbackSpeed.toFixed(1)}`}</Button>
+					<Button onClick={handlePlaybackSpeed} w={"70px"}>{`x${option.playbackSpeed.toFixed(
+						1,
+					)}`}</Button>
 				</Flex>
 			</Container>
 			{option.isPaused && (
@@ -230,7 +216,6 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					</Center>
 				</Overlay>
 			)}
-			{logVisible && <LogOverlay speaker1={_data.speaker1} speaker2={_data.speaker2} />}
 			{argutiaPhase === "waiting" && <WaitOverlay />}
 			{argutiaPhase === "end" && <EndOverlay />}
 		</div>
