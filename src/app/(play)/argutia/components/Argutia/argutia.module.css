@@ -7,6 +7,9 @@
   width: 100vw;
   * {
     color: var(--mantine-color-white);
+    @media (max-width: $mantine-breakpoint-md) {
+      font-size: rem(16);
+    }
   }
 }
 
@@ -58,37 +61,14 @@
   }
 }
 
-.speech_bubble {
-  display: inline-block;  
-  padding: var(--mantine-spacing-md);
-  background: white;
-  border-radius: 5px;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-  max-height: calc(100vh - var(--mantine-spacing-xl) * 6 - 48px);
-  overflow-y: auto;
-  overflow-x: visible;
-}
-
-.speech_bubble_container.left {
-  float: left;
-  &::after {
-    left: -24px;
-    border-radius: 0 0px 10px 16px;
-    box-shadow: -10px -18px 0 -8px white inset;
+.speech {
+  color: var(--mantine-color-text);
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(16);
   }
 }
 
-.speech_bubble_container.right {
-  float: right;
-  &::after {
-    right: -24px;
-    border-radius: 0 0px 16px 10px;
-    box-shadow: 10px -18px 0 -8px white inset;
-  }
-}
-
-.text {
+.rectangle {
   position: relative;
   padding-bottom: 1em;
   &::after {
@@ -119,4 +99,11 @@
 
 .blink-animation {
   animation: blink 1s infinite;
+}
+
+.next_container {
+  @media (max-width: $mantine-breakpoint-md) {
+    flex-direction: column;
+    gap: var(--mantine-spacing-md);
+  }
 }

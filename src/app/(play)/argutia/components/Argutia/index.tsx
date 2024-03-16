@@ -4,7 +4,17 @@ import Initialize from "@/components/Features/Initialize";
 import LogOverlay from "@/components/Features/LogOverlay";
 import WaitOverlay from "@/components/Features/WaitOverlay";
 import { PhaseTitles, Phases } from "@/constants";
-import { ActionIcon, Box, Button, Center, Container, Flex, Overlay, Title } from "@mantine/core";
+import {
+	ActionIcon,
+	Box,
+	Button,
+	Center,
+	Container,
+	Flex,
+	Overlay,
+	Text,
+	Title,
+} from "@mantine/core";
 import { IconMessage, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
@@ -134,26 +144,31 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 								style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
 							/>
 						</Box>
-						<Title>
-							{_data.speaker1.position}: {_data.speaker1.model}
+						<Title order={4}>
+							{_data.speaker1.position}
+							<br />
+							{_data.speaker1.model}
 						</Title>
 					</Flex>
-					<SpeechBubble direction={isSpeaker1 ? "left" : "right"} style={{ flex: "1 0 50%" }}>
-						<Title
-							size={"h3"}
+					<SpeechBubble direction={isSpeaker1 ? "left" : "right"} style={{ flex: "0 0 50%" }}>
+						<Text
 							c={"var(--mantine-color-text)"}
 							className={`
-									${end && classes.text}
-									${!isSpeaker1 && classes.direction_ltr}
-								`}
+								${classes.speech}
+								${end && classes.rectangle}
+								${!isSpeaker1 && classes.direction_ltr}
+							`}
 							ref={ref}
 						/>
 						{end && (
-							<Flex justify={"space-around"} className={`${!isSpeaker1 && classes.direction_ltr}`}>
-								<Button onClick={replay} size={"lg"}>
+							<Flex
+								justify={"space-around"}
+								className={`${classes.next_container} ${!isSpeaker1 && classes.direction_ltr}`}
+							>
+								<Button onClick={replay} size={"md"}>
 									もう一度
 								</Button>
-								<Button size="lg" onClick={handleNextPhase}>
+								<Button size="md" onClick={handleNextPhase}>
 									{argutiaPhase === "speaker1-closing-arguments" ? "終了する" : "次へ進む"}
 								</Button>
 							</Flex>
@@ -169,15 +184,19 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 								style={{ objectFit: "contain" }}
 							/>
 						</Box>
-						<Title>
-							{_data.speaker2.position}: {_data.speaker2.model}
+						<Title order={4}>
+							{_data.speaker2.position}
+							<br />
+							{_data.speaker2.model}
 						</Title>
 					</Flex>
 				</Flex>
 				{/* TODO: ↓コンポーネント切り出し */}
 				<Flex justify={"space-around"} className={classes.menu}>
 					<LogOverlay speaker1={_data.speaker1} speaker2={_data.speaker2}>
-						<IconMessage />
+						<Box w="34px">
+							<IconMessage />
+						</Box>
 					</LogOverlay>
 					<ActionIcon
 						size={"lg"}
