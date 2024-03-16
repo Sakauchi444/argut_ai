@@ -10,12 +10,7 @@ export function HeroImage() {
 					<div className={classes.content}>
 						<Title className={classes.title}>
 							The{" "}
-							<Text
-								component="span"
-								inherit
-								variant="gradient"
-								gradient={{ from: "pink", to: "yellow" }}
-							>
+							<Text inherit variant="gradient" gradient={{ from: "pink", to: "yellow" }}>
 								Heated Argutia
 							</Text>{" "}
 							of AI vs AI.
@@ -27,18 +22,12 @@ export function HeroImage() {
 						</Text>
 						<Flex gap={20} mt={40} direction={{ md: "row", base: "column" }}>
 							<Link href="/argutia">
-								<Button
-									size="xl"
-									className={classes.control}
-								>
+								<Button size="xl" className={classes.control}>
 									Let's Argutia
 								</Button>
 							</Link>
 							<Link href="/argutia/search">
-								<Button
-									size="xl"
-									className={classes.control}
-								>
+								<Button size="xl" className={classes.control}>
 									View past Argutia
 								</Button>
 							</Link>
