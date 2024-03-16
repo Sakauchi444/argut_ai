@@ -12,9 +12,7 @@ export function ServerError() {
 					already notified. Try refreshing the page.
 				</Text>
 				<Group justify="center">
-					<Button variant="white" size="md">
-						Refresh the page
-					</Button>
+					<Button size="md">Refresh the page</Button>
 				</Group>
 			</Container>
 		</div>
