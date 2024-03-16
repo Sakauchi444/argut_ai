@@ -32,10 +32,10 @@ export const Phases: ArgutiaPhase[] = [
 	"speaker2-cross-examination",
 	"speaker2-arguments",
 	"speaker1-cross-examination",
-	"speaker1-rebuttal",
 	"speaker2-rebuttal",
-	"speaker1-closing-arguments",
+	"speaker1-rebuttal",
 	"speaker2-closing-arguments",
+	"speaker1-closing-arguments",
 	"end",
 	"waiting",
 ];

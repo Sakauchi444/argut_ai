@@ -31,9 +31,9 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 			setReadIndex(0);
 		} else if (argutiaPhase === "speaker2-arguments") {
 			setReadIndex(1);
-		} else if (argutiaPhase === "speaker2-rebuttal") {
+		} else if (argutiaPhase === "speaker1-rebuttal") {
 			setReadIndex(2);
-		} else if (argutiaPhase === "speaker2-closing-arguments") {
+		} else if (argutiaPhase === "speaker1-closing-arguments") {
 			setReadIndex(3);
 		} else if (argutiaPhase === "end") {
 			setTimeout(() => {
@@ -178,7 +178,7 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 										size="lg"
 										onClick={handleNextPhase}
 									>
-										{argutiaPhase === "speaker2-closing-arguments" ? "終了する" : "次へ進む"}
+										{argutiaPhase === "speaker1-closing-arguments" ? "終了する" : "次へ進む"}
 									</Button>
 								</Flex>
 							)}
