@@ -53,13 +53,16 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 								/>
 							</Input.Wrapper>
 						</Box>
-						<Box>
+						<Box w={"32rem"} maw={"100%"}>
 							<Flex className={classes.speaker}>
-								<Input.Wrapper label="立場" withAsterisk classNames={{ label: classes.label }}>
+								<Input.Wrapper
+									label="立場"
+									withAsterisk
+									classNames={{ label: classes.label }}
+									flex={"2"}
+								>
 									<Input
 										size={"sm"}
-										w={"30vw"}
-										miw={"200px"}
 										placeholder="例: きの〇の山"
 										required
 										{...form.getInputProps("speaker1.position")}
@@ -84,11 +87,14 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 								</Text>
 							</Flex>
 							<Flex className={classes.speaker}>
-								<Input.Wrapper label="立場" withAsterisk classNames={{ label: classes.label }}>
+								<Input.Wrapper
+									label="立場"
+									withAsterisk
+									classNames={{ label: classes.label }}
+									flex={"2"}
+								>
 									<Input
 										size={"sm"}
-										w={"30vw"}
-										miw={"200px"}
 										placeholder="例: た〇のこの里"
 										required
 										{...form.getInputProps("speaker2.position")}
@@ -103,9 +109,7 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 								/>
 							</Flex>
 						</Box>
-						<Button type="submit">
-							作成する
-						</Button>
+						<Button type="submit">作成する</Button>
 					</Flex>
 				</form>
 			</Container>
