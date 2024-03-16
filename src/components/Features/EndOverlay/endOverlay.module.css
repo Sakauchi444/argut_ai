@@ -1,0 +1,36 @@
+.root::before, .root::after {
+  position: fixed;
+  z-index: 1;
+  top: -15%;
+  display: block;
+  width: 50%;
+  height: 130%;
+  content: '';
+  background-color: #c54545;
+}
+.root::before {
+  left: 0;
+  animation : curtain_l 3s;
+  -webkit-animation : curtain_l 3s;
+}
+.root::after {
+  right: 0;
+  animation : curtain_r 3s;
+  -webkit-animation : curtain_r 3s;
+}
+
+@keyframes curtain_l {
+  0%{transform: rotate(0deg) translateX(-100%); opacity:0; visibility: hidden;}
+  20%{opacity: 1;}
+  60%{transform: rotate(6deg) translateX(-50%);}
+  80%{transform: rotate(0deg) translateX(0%); background-color: #c54545;}
+  100%{visibility: visible;}
+}
+
+@keyframes curtain_r{
+  0%{transform: rotate(0deg) translateX(100%); opacity:0; visibility: hidden;}
+  20%{opacity: 1;}
+  60%{transform: rotate(-6deg) translateX(50%);}
+  80%{transform: rotate(0deg) translateX(0%); background-color: #c54545;}
+  100%{ visibility: visible;}
+}

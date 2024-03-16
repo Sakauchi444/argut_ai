@@ -1,5 +1,6 @@
 import { Center, Overlay, Title, Transition } from "@mantine/core";
 import React from "react";
+import classes from "./endOverlay.module.css";
 
 const scaleY = {
 	in: { opacity: 1, transform: "scaleY(1)" },
@@ -11,7 +12,7 @@ const scaleY = {
 const EndOverlay = () => {
 	return (
 		<Overlay zIndex={3000}>
-			<Center h={"100%"}>
+			<Center h={"100%"} className={classes.root}>
 				<Transition
 					mounted={true}
 					transition={scaleY}
@@ -19,7 +20,7 @@ const EndOverlay = () => {
 					timingFunction="ease"
 					keepMounted
 				>
-					{(transitionStyle) => <Title style={{ ...transitionStyle, zIndex: 1 }}>終了!</Title>}
+					{(transitionStyle) => <Title style={{ ...transitionStyle, zIndex: 4 }}>終了!</Title>}
 				</Transition>
 			</Center>
 		</Overlay>
