@@ -1,3 +1,5 @@
+type Model = "GPT-3.5" | "GPT-4" | "Llama-2" | "Claude-2" | "Claude-3";
+
 type Phase = "prepare" | "argutia" | "result";
 
 type ArgutiaData = {

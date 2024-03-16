@@ -1,4 +1,12 @@
-export const models = ["GPT-4", "Gemini", "Claude-3"];
+export const models = ["GPT-3.5", "GPT-4", "Llama-2", "Claude-2", "Claude-3"];
+
+export const bots: Record<Model, string> = {
+	"GPT-3.5": "gpt3_5",
+	"GPT-4": "beaver",
+	"Llama-2": "acouchy",
+	"Claude-2": "claude_2_short",
+	"Claude-3": "claude_2_1_cedar",
+}
 
 export const LoadingPhrases = [
 	"AIがストレッチをしています...",
@@ -45,3 +53,4 @@ export const PhaseTitles: Record<ArgutiaPhase, string> = {
 	end: "終了",
 	waiting: "待機中",
 };
+
