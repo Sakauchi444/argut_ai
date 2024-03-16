@@ -27,6 +27,44 @@ type Props = {
 	setPhase: Dispatch<SetStateAction<Phase>>;
 };
 
+const speaker1Image = (phase: ArgutiaPhase) => {
+	switch (phase) {
+		case "speaker1-arguments":
+		case "speaker1-cross-examination":
+		case "speaker1-rebuttal":
+		case "speaker1-closing-arguments":
+			return "/images/zunda_mic.png";
+		case "speaker2-arguments":
+		case "speaker2-cross-examination":
+		case "speaker2-rebuttal":
+			case "speaker2-closing-arguments":
+			return "/images/zunda_hearing.png";
+		case "initialize":
+		case "end":
+		case "waiting":
+			return "/images/zunda_think.png";
+	}
+}
+
+const speaker2Image = (phase: ArgutiaPhase) => {
+	switch (phase) {
+		case "speaker1-arguments":
+		case "speaker1-cross-examination":
+		case "speaker1-rebuttal":
+		case "speaker1-closing-arguments":
+			return "/images/zunda_hearing.png";
+		case "speaker2-arguments":
+		case "speaker2-cross-examination":
+		case "speaker2-rebuttal":
+		case "speaker2-closing-arguments":
+			return "/images/zunda_mic.png";
+		case "initialize":
+		case "end":
+		case "waiting":
+			return "/images/zunda_think.png";
+	}
+}
+
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");
 	const [readIndex, setReadIndex] = useState(0);
@@ -137,8 +175,8 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pl={"sm"} ta={"center"}>
 						<Box pos="relative" flex={"1 1 90%"}>
 							<Image
-								src={"/images/ずんだもん_0001.png"}
-								alt={"Player1"}
+								src={speaker1Image(argutiaPhase)}
+								alt={"Speaker1"}
 								fill
 								sizes="25%"
 								style={{ transform: "scale(-1, 1)", objectFit: "contain" }}
@@ -177,8 +215,8 @@ const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 					<Flex direction={"column"} justify={"flex-end"} flex={"0 0 25%"} pr={"md"} ta={"center"}>
 						<Box pos="relative" flex={"1 1 90%"}>
 							<Image
-								src={"/images/ずんだもん_0001.png"}
-								alt={"Player2"}
+								src={speaker2Image(argutiaPhase)}
+								alt={"Speaker2"}
 								fill
 								sizes="25%"
 								style={{ objectFit: "contain" }}
