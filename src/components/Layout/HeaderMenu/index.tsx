@@ -42,23 +42,9 @@ export function HeaderMenu() {
 					/>
 				</div>
 			</Container>
-			<Drawer
-				opened={opened}
-				onClose={close}
-				position="right"
-				withCloseButton={false}
-			>
-				<Flex
-					direction="column"
-					justify={"space-between"}
-					h="calc(100vh - 32px)"
-				>
-					<Stack
-						mt={40}
-						h={300}
-						bg="var(--mantine-color-body)"
-						justify="flex-start"
-					>
+			<Drawer opened={opened} onClose={close} position="right" withCloseButton={false}>
+				<Flex direction="column" justify={"space-between"} h="calc(100vh - 32px)">
+					<Stack mt={40} h={300} bg="var(--mantine-color-body)" justify="flex-start">
 						{items}
 					</Stack>
 					<Footer />

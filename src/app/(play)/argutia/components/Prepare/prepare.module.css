@@ -1,0 +1,25 @@
+.root {
+  background-color: #11284b;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%),
+    url("/images/students-working-on-project.jpg");
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: var(--mantine-spacing-xl);
+  height: 100vh;
+  width: 100vw;
+}
+
+.speaker {
+  display: flex;
+  align-items: stretch;
+  gap: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    flex-direction: column;
+  }
+}
+
+.label {
+  color: var(--mantine-color-white);
+}

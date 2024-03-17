@@ -1,0 +1,109 @@
+.root {
+  background-color: #11284b;
+  background-size: cover;
+  background-position: center;
+  padding-top: var(--mantine-spacing-xl);
+  height: 100vh;
+  width: 100vw;
+  * {
+    color: var(--mantine-color-white);
+    @media (max-width: $mantine-breakpoint-md) {
+      font-size: rem(16);
+    }
+  }
+}
+
+.menu {
+  border-top: var(--mantine-color-white) 2px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--mantine-spacing-xl);
+  margin-top: var(--mantine-spacing-md);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.speech_bubble_container {
+  position: relative;
+  margin: 0 var(--mantine-spacing-xl);
+  &::after {
+    z-index: 1;
+    position: absolute;
+    content: "";
+    width: 26px;
+    height: 26px;
+    top: 30%;
+  }
+}
+
+.direction_rtl {
+  direction: rtl;
+}
+
+.direction_ltr {
+  direction: ltr;
+}
+
+.scrollbar { 
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #1bb4d3), to(#1bd8d3));
+    background: linear-gradient(to bottom, var(--mantine-color-yellow-filled) 50%, var(--mantine-color-pink-filled));
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #dcdcdc;
+  }
+}
+
+.speech {
+  color: var(--mantine-color-text);
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(16);
+  }
+}
+
+.rectangle {
+  position: relative;
+  padding-bottom: 1em;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: #000000;
+    height: calc(tan(60deg) * 1rem / 2);
+    width: 1rem;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    animation: blink 1s infinite;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink-animation {
+  animation: blink 1s infinite;
+}
+
+.next_container {
+  @media (max-width: $mantine-breakpoint-md) {
+    flex-direction: column;
+    gap: var(--mantine-spacing-md);
+  }
+}
