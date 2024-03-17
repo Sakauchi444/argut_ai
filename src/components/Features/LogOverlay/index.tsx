@@ -30,7 +30,7 @@ const LogOverlay: FC<Props> = ({ speaker1, speaker2, children }) => {
 					<Container size={"xl"} p={"xl"} className={classes.container}>
 						<Flex justify={"space-between"}>
 							<Title order={2}>会話ログ</Title>
-							<CloseButton size="lg" onClick={() => setShow(false)} />
+							<CloseButton size="lg" variant="transparent" onClick={() => setShow(false)} />
 						</Flex>
 						<Stack className={classes.stack}>
 							{speaker1.comments.map((comment, index) => (
