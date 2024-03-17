@@ -3,6 +3,7 @@ type Model = "GPT-3.5" | "GPT-4" | "Llama-2" | "Claude-2" | "Claude-3";
 type Phase = "prepare" | "argutia" | "result";
 
 type ArgutiaData = {
+	conversationId: string;
 	agenda: string;
 	speaker1: Speaker;
 	speaker2: Speaker;
@@ -13,6 +14,12 @@ type Speaker = {
 	position: string;
 	comments: string[];
 };
+
+type ChatCodeId = {
+	chatCodeId: string;
+};
+
+type SpeakerWithId = Speaker & ChatCodeId;
 
 type ArgutiaPhase =
 	| "initialize"
@@ -25,7 +32,6 @@ type ArgutiaPhase =
 	| "speaker2-closing-arguments"
 	| "speaker1-closing-arguments"
 	| "end"
-	| "waiting"; // API からのレスポンス待ち
 
 // 立論、反対尋問、反駁、結論
 type Sections = "arguments" | "cross-examination" | "rebuttal" | "closing-arguments";
