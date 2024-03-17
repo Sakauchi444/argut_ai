@@ -5,21 +5,21 @@ import React, { FC, useEffect, useState } from "react";
 import classes from "./initialize.module.css";
 
 type Props = {
+	conversationId: string;
 	setArgutiaPhase: React.Dispatch<React.SetStateAction<ArgutiaPhase>>;
 };
 
-const initialize: FC<Props> = ({ setArgutiaPhase }) => {
+const initialize: FC<Props> = ({ conversationId, setArgutiaPhase }) => {
 	const [phraseIndex, setPhraseIndex] = useState(Math.floor(Math.random() * LoadingPhrases.length));
 
 	useEffect(() => {
+		if (conversationId !== "") return setArgutiaPhase("speaker1-arguments");
 		const timerId = setInterval(() => {
 			setPhraseIndex(Math.floor(Math.random() * LoadingPhrases.length));
-			// TODO: レスポンスを受け取ったら次のフェーズに遷移
-			setArgutiaPhase("speaker1-arguments");
 		}, 5000); // 5秒ごとにフレーズを更新
 
 		return () => clearInterval(timerId);
-	}, [setArgutiaPhase]);
+	}, [setArgutiaPhase, conversationId]);
 
 	return (
 		<div className={classes.root}>

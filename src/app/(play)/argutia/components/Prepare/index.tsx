@@ -11,14 +11,32 @@ type Props = {
 	setData: Dispatch<SetStateAction<ArgutiaData>>;
 };
 
-type SubmitData = {[P in 'agenda'|'speaker1'|'speaker2']: ArgutiaData[P]}
+type SubmitData = { [P in "agenda" | "speaker1" | "speaker2"]: ArgutiaData[P] };
+
+const fetcher = async (url: string, title: string, positionA: string, positionB: string) => {
+	const response = await fetch(url, {
+		method: "POST",
+		body: JSON.stringify({
+			title: title,
+			positionA: positionA,
+			positionB: positionB,
+		}),
+	});
+	if (!response.ok) {
+		throw new Error("An error occurred while fetching the data.");
+	}
+	return response.json();
+};
+
+type Response = {
+  conversationId: string;
+};
 
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
-	const handleSubmit = (data: SubmitData) => {
-		// TODO: ここでデータを送信する
-		// レスポンスに応じてconversationIdをセットする
-		setData({ ...data, conversationId: "0"});
+	const handleSubmit = async (data: SubmitData) => {
 		setPhase("argutia");
+		const res: Response = await fetcher("/api/start", data.agenda, data.speaker1.position, data.speaker2.position);
+		setData({ ...data, conversationId: res.conversationId });
 	};
 
 	const form = useForm<SubmitData>({
