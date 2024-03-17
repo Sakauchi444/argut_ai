@@ -31,7 +31,7 @@ const Result: FC<Props> = ({ data, setData, setPhase }) => {
 				comments: [],
 			},
 		});
-	}
+	};
 
 	const _result_data = {
 		winner: "speaker1",

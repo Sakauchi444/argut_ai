@@ -31,7 +31,7 @@ const ArgutiaPage = () => {
 		case "argutia":
 			return <Argutia setPhase={setPhase} data={data} />;
 		case "result":
-			return <Result setPhase={setPhase} data={data} setData={setData}/>;
+			return <Result setPhase={setPhase} data={data} setData={setData} />;
 	}
 };
 
