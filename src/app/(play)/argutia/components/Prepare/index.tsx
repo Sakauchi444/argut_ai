@@ -1,6 +1,6 @@
 "use client";
 
-import { models } from "@/constants";
+import { SampleAgendas, models } from "@/constants";
 import { Box, Button, Container, Flex, Input, NativeSelect, Text, Title, rem } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React, { Dispatch, FC, SetStateAction } from "react";
@@ -29,14 +29,36 @@ const fetcher = async (url: string, title: string, positionA: string, positionB:
 };
 
 type Response = {
-  conversationId: string;
+	conversationId: string;
 };
 
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
 	const handleSubmit = async (data: SubmitData) => {
 		setPhase("argutia");
-		const res: Response = await fetcher("/api/start", data.agenda, data.speaker1.position, data.speaker2.position);
+		const res: Response = await fetcher(
+			"/api/start",
+			data.agenda,
+			data.speaker1.position,
+			data.speaker2.position,
+		);
 		setData({ ...data, conversationId: res.conversationId });
+	};
+
+	const handleAutoSelect = () => {
+		const sample = SampleAgendas[Math.floor(Math.random() * SampleAgendas.length)];
+		form.setValues({
+			agenda: sample.agenda,
+			speaker1: {
+				model: form.values.speaker1.model,
+				position: sample.speaker1,
+				comments: [],
+			},
+			speaker2: {
+				model: form.values.speaker2.model,
+				position: sample.speaker2,
+				comments: [],
+			},
+		});
 	};
 
 	const form = useForm<SubmitData>({
@@ -128,7 +150,10 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 								/>
 							</Flex>
 						</Box>
-						<Button type="submit">作成する</Button>
+						<Flex gap={"md"}>
+							<Button onClick={handleAutoSelect}>おまかせ</Button>
+							<Button type="submit">作成する</Button>
+						</Flex>
 					</Flex>
 				</form>
 			</Container>

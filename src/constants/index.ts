@@ -50,3 +50,56 @@ export const PhaseTitles: Record<ArgutiaPhase, string> = {
 	"speaker2-closing-arguments": "結論",
 	end: "終了",
 };
+
+export const SampleAgendas = [
+	{
+		agenda: "きのこの山とたけのこの里、どちらが美味しいですか？",
+		speaker1: "きのこの山",
+		speaker2: "たけのこの里",
+	},
+	{
+		agenda: "犬と猫、どちらが飼いやすいか？",
+		speaker1: "犬",
+		speaker2: "猫",
+	},
+	{
+		agenda: "安楽死は合法化すべきか？",
+		speaker1: "賛成",
+		speaker2: "反対",
+	},
+	{
+		agenda: "AIは人間を超えることができるか？",
+		speaker1: "可能",
+		speaker2: "不可能",
+	},
+	{
+		agenda: "宇宙人は存在するか？",
+		speaker1: "存在する",
+		speaker2: "存在しない",
+	},
+	{
+		agenda: "バナナはおやつに含むか",
+		speaker1: "含む",
+		speaker2: "含まない",
+	},
+	{
+		agenda: "親ガチャは存在するか",
+		speaker1: "存在する",
+		speaker2: "存在しない",
+	},
+	{
+		agenda: "救急車は有料化すべき",
+		speaker1: "賛成",
+		speaker2: "反対",
+	},
+	{
+		agenda: "死刑制度は廃止すべき",
+		speaker1: "賛成",
+		speaker2: "反対",
+	},
+	{
+		agenda: "仕事は給与とやりがいのどちらが大切か",
+		speaker1: "給与",
+		speaker2: "やりがい",
+	},
+];
