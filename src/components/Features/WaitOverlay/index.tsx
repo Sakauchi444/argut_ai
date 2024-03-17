@@ -32,7 +32,7 @@ const WaitOverlay = () => {
 	return (
 		<Overlay color="#000" backgroundOpacity={0.85} zIndex={2000}>
 			<Center h={"100%"}>
-				<Title ref={ref} />
+				<Title mt={"5.5rem"} ref={ref} />
 				<Loading />
 			</Center>
 		</Overlay>
