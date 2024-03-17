@@ -34,7 +34,10 @@ type Response = {
 	message: string;
 };
 
+const sections = ["立論", "反対尋問","反駁","最終弁論"]
+
 const caseSpeaker1 = [0, 3, 5, 7];
+const caseSpeaker2 = [2, 1, 4, 6];
 
 export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAction<ArgutiaData>>) {
 	const [speaker1, setSpeaker1] = useState<SpeakerWithId>({ ...data.speaker1, chatCodeId: "0" });
@@ -55,9 +58,9 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 				if (caseSpeaker1.includes(count)) {
 					const message =
 						count === 0
-							? `あなたはディベートの参加者を演じてください。今回のテーマは「${agenda}」についてです。あなたは「${position1}」側として意見してください。あなたは三回発言ができ、そのうち最初の一回は500文字以内で${position1}側として立論してださい。立論は現状分析・現状における問題点・問題解決のためのプラン・プラン導入後のメリット・デメリットを元に行ってください。`
-							: `${position2}側の意見です。500字以内で反論してください。
-          ${s2.comments[s2.comments.length - 1]}`;
+							? `あなたはディベートの参加者を演じてください。今回のテーマは「${agenda}」についてです。あなたは${position1}側として口語っぽく意見してください。あなたは4回発言ができ、そのうち最初の1回は500文字以内で${position1}側として立論してださい。立論は現状分析・現状における問題点・問題解決のためのプラン・プラン導入後のメリット・デメリットを元に行なってください。「${position1}派の私としては、」から始めてください`
+							: `${position2}側の意見です。${position1}派として500字以内で${sections[caseSpeaker1.at(count) || 0]}してください。発言回数は残り${4 - (caseSpeaker1.at(count) || 0)}回です。
+              ${s2.comments[s2.comments.length - 1]}`;
 
 					const result: Response = await fetcher(
 						"/api/generative-ai",
@@ -78,9 +81,11 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 					}
 				} else {
 					const message =
-						count === 2
-							? `あなたはディベートの参加者を演じてください。今回のテーマは「${agenda}」についてです。あなたは「${position2}」側として意見してください。あなたは三回発言ができ、そのうち最初の一回は500文字以内で${position2}側として立論してださい。立論は現状分析・現状における問題点・問題解決のためのプラン・プラン導入後のメリット・デメリットを元に行ってください。`
-							: `あなたはディベートの参加者を演じてください。今回のテーマは「${agenda}」についてです。あなたは「${position2}」側として意見してください。${position1}側の意見です。500字以内で反論してください。
+						count === 1
+							? `あなたはディベートの参加者を演じてください。今回のテーマは「${agenda}」についてです。あなたは${position2}側として口語っぽく意見してください。あなたは4回発言ができ、そのうち最初の1回は500文字以内で${position2}側として反対尋問してださい。反対尋問は肯定側の現状分析・肯定側の問題点は重大なものか・問題解決はするか・実行可能か・本当にメリットは発生するのか、を元に行ってください。以下が${position1}派の意見です。
+              ${s1.comments[s1.comments.length - 1]}
+              「${position2}派の私としては、」から始めてください`
+							: `${position1}側の意見です。${position2}派として500字以内で${sections[caseSpeaker2.at(count) || 0]}してください。発言回数は残り${4 - (caseSpeaker2.at(count) || 0)}回です。
           ${s1.comments[s1.comments.length - 1]}`;
 					const result: Response = await fetcher(
 						"/api/generative-ai",
