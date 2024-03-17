@@ -27,7 +27,7 @@ type Props = {
 };
 
 const speaker1Image = (phase: ArgutiaPhase, isLoading: boolean) => {
-	if (isLoading) return "/images/zunda_think.png"
+	if (isLoading) return "/images/zunda_think.png";
 	switch (phase) {
 		case "speaker1-arguments":
 		case "speaker1-cross-examination":
@@ -46,7 +46,7 @@ const speaker1Image = (phase: ArgutiaPhase, isLoading: boolean) => {
 };
 
 const speaker2Image = (phase: ArgutiaPhase, isLoading: boolean) => {
-	if (isLoading) return "/images/zunda_think.png"
+	if (isLoading) return "/images/zunda_think.png";
 	switch (phase) {
 		case "speaker1-arguments":
 		case "speaker1-cross-examination":
@@ -99,23 +99,23 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 	const isSpeaker1 = /^speaker1/.test(argutiaPhase);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	const  setText = useMemo(() => {
+	const setText = useMemo(() => {
 		if (argutiaPhase === "end" || argutiaPhase === "initialize") {
 			return "";
 		}
 		if (isSpeaker1) {
 			if (data.speaker1.comments[readIndex]) {
 				isLoading && setIsLoading(false);
-				return data.speaker1.comments[readIndex]
+				return data.speaker1.comments[readIndex];
 			}
 		} else {
 			if (data.speaker2.comments[readIndex]) {
 				isLoading && setIsLoading(false);
-				return data.speaker2.comments[readIndex]
+				return data.speaker2.comments[readIndex];
 			}
 		}
 		isLoading || setIsLoading(true);
-		return ""
+		return "";
 	}, [argutiaPhase, data.speaker1.comments, data.speaker2.comments, readIndex, isSpeaker1]);
 
 	const { ref, replay } = useScramble({
@@ -123,7 +123,9 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 		speed:
 			0.4 *
 			option.playbackSpeed *
-			(option.isPaused || argutiaPhase === "initialize" || argutiaPhase === "end" || isLoading ? 0 : 1),
+			(option.isPaused || argutiaPhase === "initialize" || argutiaPhase === "end" || isLoading
+				? 0
+				: 1),
 		tick: 1,
 		step: 1,
 		seed: 0,
@@ -146,7 +148,7 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 	};
 
 	if (argutiaPhase === "initialize") {
-		return <Initialize setArgutiaPhase={setArgutiaPhase} />;
+		return <Initialize conversationId={data.conversationId} setArgutiaPhase={setArgutiaPhase} />;
 	}
 	return (
 		<div className={classes.root}>

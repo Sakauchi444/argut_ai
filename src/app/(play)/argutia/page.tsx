@@ -1,10 +1,10 @@
 "use client";
 
+import { useGenerativeAI } from "@/hooks/useGenerativeAi";
 import React from "react";
 import Argutia from "./components/Argutia";
 import Prepare from "./components/Prepare";
 import Result from "./components/Result";
-import { useGenerativeAI } from "@/hooks/useGenerativeAi";
 
 const ArgutiaPage = () => {
 	const [phase, setPhase] = React.useState<Phase>("prepare");
@@ -23,7 +23,7 @@ const ArgutiaPage = () => {
 		},
 	});
 
-	useGenerativeAI(data, setData)
+	useGenerativeAI(data, setData);
 
 	switch (phase) {
 		case "prepare":
