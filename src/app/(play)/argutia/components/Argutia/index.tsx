@@ -37,14 +37,14 @@ const speaker1Image = (phase: ArgutiaPhase) => {
 		case "speaker2-arguments":
 		case "speaker2-cross-examination":
 		case "speaker2-rebuttal":
-			case "speaker2-closing-arguments":
+		case "speaker2-closing-arguments":
 			return "/images/zunda_hearing.png";
 		case "initialize":
 		case "end":
 		case "waiting":
 			return "/images/zunda_think.png";
 	}
-}
+};
 
 const speaker2Image = (phase: ArgutiaPhase) => {
 	switch (phase) {
@@ -63,7 +63,7 @@ const speaker2Image = (phase: ArgutiaPhase) => {
 		case "waiting":
 			return "/images/zunda_think.png";
 	}
-}
+};
 
 const Argutia: FC<Props> = ({ data, setData, setPhase }) => {
 	const [argutiaPhase, setArgutiaPhase] = useState<ArgutiaPhase>("initialize");

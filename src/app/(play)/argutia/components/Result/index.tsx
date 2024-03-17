@@ -56,7 +56,7 @@ const Result: FC<Props> = ({ data, setPhase }) => {
 							<Text c={"black"}>{_result_data.text}</Text>
 						</SpeechBubble>
 					</Flex>
-					<Flex gap={"xl"}>
+					<Flex gap={"md"} wrap={"wrap"} justify={"center"}>
 						<LogOverlay speaker1={data.speaker1} speaker2={data.speaker2}>
 							会話を見る
 						</LogOverlay>
