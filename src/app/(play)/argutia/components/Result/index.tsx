@@ -9,12 +9,31 @@ import classes from "./result.module.css";
 
 type Props = {
 	data: ArgutiaData;
+	setData: Dispatch<SetStateAction<ArgutiaData>>;
 	setPhase: Dispatch<SetStateAction<Phase>>;
 };
 
-const Result: FC<Props> = ({ data, setPhase }) => {
+const Result: FC<Props> = ({ data, setData, setPhase }) => {
 	// TODO: fetch judge API
-	// TODO: winner decide API
+
+	const handleNextArgutia = () => {
+		setPhase("prepare");
+		setData({
+			conversationId: "",
+			agenda: "",
+			speaker1: {
+				model: "GPT-4",
+				position: "",
+				comments: [],
+			},
+			speaker2: {
+				model: "GPT-4",
+				position: "",
+				comments: [],
+			},
+		});
+	};
+
 	const _result_data = {
 		winner: "speaker1",
 		model: "GPT-4",
@@ -95,7 +114,7 @@ const Result: FC<Props> = ({ data, setPhase }) => {
 						<Link href="/">
 							<Button>Topに戻る</Button>
 						</Link>
-						<Button onClick={() => setPhase("prepare")}>もう一度</Button>
+						<Button onClick={handleNextArgutia}>もう一度</Button>
 					</Flex>
 				</Flex>
 			</Container>

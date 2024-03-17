@@ -1,11 +1,10 @@
-export const models = ["GPT-3.5", "GPT-4", "Llama-2", "Claude-2", "Claude-3"];
+export const models = ["GPT-3.5", "GPT-4", "Claude-2", "Claude-3"];
 
-export const bots: Record<Model, string> = {
-	"GPT-3.5": "gpt3_5",
-	"GPT-4": "beaver",
-	"Llama-2": "acouchy",
-	"Claude-2": "claude_2_short",
-	"Claude-3": "claude_2_1_cedar",
+export const bots: Record<Model, Bot> = {
+	"GPT-3.5": { bot: "gpt3_5", speakerId: "1" },
+	"GPT-4": { bot: "beaver", speakerId: "2" },
+	"Claude-2": { bot: "claude_2_short", speakerId: "3" },
+	"Claude-3": { bot: "claude_2_1_cedar", speakerId: "4" },
 };
 
 export const LoadingPhrases = [
@@ -37,7 +36,6 @@ export const Phases: ArgutiaPhase[] = [
 	"speaker2-closing-arguments",
 	"speaker1-closing-arguments",
 	"end",
-	"waiting",
 ];
 
 export const PhaseTitles: Record<ArgutiaPhase, string> = {
@@ -51,5 +49,57 @@ export const PhaseTitles: Record<ArgutiaPhase, string> = {
 	"speaker1-closing-arguments": "結論",
 	"speaker2-closing-arguments": "結論",
 	end: "終了",
-	waiting: "待機中",
 };
+
+export const SampleAgendas = [
+	{
+		agenda: "きのこの山とたけのこの里、どちらが美味しいですか？",
+		speaker1: "きのこの山",
+		speaker2: "たけのこの里",
+	},
+	{
+		agenda: "犬と猫、どちらが飼いやすいか？",
+		speaker1: "犬",
+		speaker2: "猫",
+	},
+	{
+		agenda: "安楽死は合法化すべきか？",
+		speaker1: "賛成",
+		speaker2: "反対",
+	},
+	{
+		agenda: "AIは人間を超えることができるか？",
+		speaker1: "可能",
+		speaker2: "不可能",
+	},
+	{
+		agenda: "宇宙人は存在するか？",
+		speaker1: "存在する",
+		speaker2: "存在しない",
+	},
+	{
+		agenda: "バナナはおやつに含むか",
+		speaker1: "含む",
+		speaker2: "含まない",
+	},
+	{
+		agenda: "親ガチャは存在するか",
+		speaker1: "存在する",
+		speaker2: "存在しない",
+	},
+	{
+		agenda: "救急車は有料化すべき",
+		speaker1: "賛成",
+		speaker2: "反対",
+	},
+	{
+		agenda: "死刑制度は廃止すべき",
+		speaker1: "賛成",
+		speaker2: "反対",
+	},
+	{
+		agenda: "仕事は給与とやりがいのどちらが大切か",
+		speaker1: "給与",
+		speaker2: "やりがい",
+	},
+];

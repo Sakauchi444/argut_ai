@@ -1,6 +1,6 @@
 "use client";
 
-import { models } from "@/constants";
+import { SampleAgendas, models } from "@/constants";
 import { Box, Button, Container, Flex, Input, NativeSelect, Text, Title, rem } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React, { Dispatch, FC, SetStateAction } from "react";
@@ -11,16 +11,57 @@ type Props = {
 	setData: Dispatch<SetStateAction<ArgutiaData>>;
 };
 
+type SubmitData = { [P in "agenda" | "speaker1" | "speaker2"]: ArgutiaData[P] };
+
+const fetcher = async (url: string, title: string, positionA: string, positionB: string) => {
+	const response = await fetch(url, {
+		method: "POST",
+		body: JSON.stringify({
+			title: title,
+			positionA: positionA,
+			positionB: positionB,
+		}),
+	});
+	if (!response.ok) {
+		throw new Error("An error occurred while fetching the data.");
+	}
+	return response.json();
+};
+
+type Response = {
+	conversationId: string;
+};
+
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
-	const handleSubmit = (data: ArgutiaData) => {
-		setData({ ...data });
+	const handleSubmit = async (data: SubmitData) => {
 		setPhase("argutia");
-		// TODO: ここでデータを送信する
-		console.log(data);
-		// TODO: 復元の開始フラグを立てる
+		const res: Response = await fetcher(
+			"/api/start",
+			data.agenda,
+			data.speaker1.position,
+			data.speaker2.position,
+		);
+		setData({ ...data, conversationId: res.conversationId });
 	};
 
-	const form = useForm<ArgutiaData>({
+	const handleAutoSelect = () => {
+		const sample = SampleAgendas[Math.floor(Math.random() * SampleAgendas.length)];
+		form.setValues({
+			agenda: sample.agenda,
+			speaker1: {
+				model: form.values.speaker1.model,
+				position: sample.speaker1,
+				comments: [],
+			},
+			speaker2: {
+				model: form.values.speaker2.model,
+				position: sample.speaker2,
+				comments: [],
+			},
+		});
+	};
+
+	const form = useForm<SubmitData>({
 		initialValues: {
 			agenda: "",
 			speaker1: {
@@ -109,7 +150,10 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 								/>
 							</Flex>
 						</Box>
-						<Button type="submit">作成する</Button>
+						<Flex gap={"md"}>
+							<Button onClick={handleAutoSelect}>おまかせ</Button>
+							<Button type="submit">作成する</Button>
+						</Flex>
 					</Flex>
 				</form>
 			</Container>
