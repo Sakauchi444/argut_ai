@@ -11,16 +11,17 @@ type Props = {
 	setData: Dispatch<SetStateAction<ArgutiaData>>;
 };
 
+type SubmitData = {[P in 'agenda'|'speaker1'|'speaker2']: ArgutiaData[P]}
+
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
-	const handleSubmit = (data: ArgutiaData) => {
-		setData({ ...data });
-		setPhase("argutia");
+	const handleSubmit = (data: SubmitData) => {
 		// TODO: ここでデータを送信する
-		console.log(data);
-		// TODO: 復元の開始フラグを立てる
+		// レスポンスに応じてconversationIdをセットする
+		setData({ ...data, conversationId: "0"});
+		setPhase("argutia");
 	};
 
-	const form = useForm<ArgutiaData>({
+	const form = useForm<SubmitData>({
 		initialValues: {
 			agenda: "",
 			speaker1: {

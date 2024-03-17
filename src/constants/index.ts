@@ -37,7 +37,6 @@ export const Phases: ArgutiaPhase[] = [
 	"speaker2-closing-arguments",
 	"speaker1-closing-arguments",
 	"end",
-	"waiting",
 ];
 
 export const PhaseTitles: Record<ArgutiaPhase, string> = {
@@ -51,5 +50,4 @@ export const PhaseTitles: Record<ArgutiaPhase, string> = {
 	"speaker1-closing-arguments": "結論",
 	"speaker2-closing-arguments": "結論",
 	end: "終了",
-	waiting: "待機中",
 };
