@@ -24,9 +24,11 @@ const LogOverlay: FC<Props> = ({ speaker1, speaker2, children }) => {
 
 	return (
 		<>
-			<Button onClick={() => setShow(true)}>{children}</Button>
+			<Button onClick={() => setShow(true)} style={{ zIndex: 3000 }}>
+				{children}
+			</Button>
 			{show && (
-				<Overlay backgroundOpacity={0.9}>
+				<Overlay backgroundOpacity={0.9} zIndex={4000}>
 					<Container size={"xl"} p={"xl"} className={classes.container}>
 						<Flex justify={"space-between"}>
 							<Title order={2}>会話ログ</Title>

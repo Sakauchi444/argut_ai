@@ -12,3 +12,10 @@ https://kit-hackit.notion.site/Hackit2-Challenge-c34eb7ba24a2484288b340458436706
 
 ## アイデアソン
 https://docs.google.com/document/d/1IlEeJMFgx2W9Uz2Yu6vKjD8kF3H9yP0FQnp9-vPuuWM/edit?usp=sharing
+
+## アーキテクチャ
+![image](./docs/imgs/アーキテクチャ.drawio.png)
+
+## データベース
+![image](./docs/imgs/ERdiagram.png)
+

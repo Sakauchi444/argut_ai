@@ -11,7 +11,7 @@ const links = [
 	{ link: "/argutia", label: "Argutia" },
 	{ link: "/how_to_play", label: "How to Play" },
 	{
-		link: "/argutia/search",
+		link: "/past_argutia",
 		label: "Past Argutia",
 	},
 ];
