@@ -1,10 +1,11 @@
-export const models = ["GPT-3.5", "GPT-4", "Claude-2", "Claude-3"];
+export const models = ["GPT-3.5", "GPT-4", "Claude-2", "Claude-3-Opus", "Claude-3-Sonnet"];
 
 export const bots: Record<Model, Bot> = {
 	"GPT-3.5": { bot: "gpt3_5", speakerId: "1" },
 	"GPT-4": { bot: "beaver", speakerId: "2" },
 	"Claude-2": { bot: "claude_2_short", speakerId: "3" },
-	"Claude-3": { bot: "claude_2_1_cedar", speakerId: "4" },
+	"Claude-3-Opus": { bot: "claude_2_1_cedar", speakerId: "4" },
+	"Claude-3-Sonnet": {bot: "claude_2_1_bamboo", speakerId: "5" },
 };
 
 export const LoadingPhrases = [
