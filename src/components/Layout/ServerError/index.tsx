@@ -1,7 +1,9 @@
 import { Button, Container, Group, Text, Title } from "@mantine/core";
+import { useRouter } from "next/navigation";
 import classes from "./ServerError.module.css";
 
 export function ServerError() {
+	const router = useRouter();
 	return (
 		<div className={classes.root}>
 			<Container>
@@ -12,7 +14,9 @@ export function ServerError() {
 					already notified. Try refreshing the page.
 				</Text>
 				<Group justify="center">
-					<Button size="md">Refresh the page</Button>
+					<Button size="md" onClick={() => router.refresh()}>
+						Refresh the page
+					</Button>
 				</Group>
 			</Container>
 		</div>

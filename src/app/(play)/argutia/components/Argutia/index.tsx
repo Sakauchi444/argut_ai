@@ -89,7 +89,7 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 			setReadIndex(1);
 		} else if (argutiaPhase === "speaker1-cross-examination") {
 			setReadIndex(2);
-		} else if (argutiaPhase === "speaker2-rebuttal") {
+		} else if (argutiaPhase === "speaker1-rebuttal") {
 			setReadIndex(3);
 		}
 		setArgutiaPhase((prev) => Phases[Phases.indexOf(prev) + 1] || Phases[0]);
