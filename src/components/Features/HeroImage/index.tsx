@@ -26,7 +26,7 @@ export function HeroImage() {
 									Let's Argutia
 								</Button>
 							</Link>
-							<Link href="/argutia/search">
+							<Link href="/past_argutia">
 								<Button size="xl" className={classes.control}>
 									View past Argutia
 								</Button>
