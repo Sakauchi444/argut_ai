@@ -18,7 +18,7 @@ def lambda_handler(event, context):
     message = body_dict["message"]
     bot = body_dict["bot"]
     # bot = "a2"
-    speaker = body_dict["speakerId"]
+    position = body_dict["positionId"]
     section = body_dict["sectionId"]
 
     if chatCodeId == "0":
@@ -43,7 +43,7 @@ def lambda_handler(event, context):
     # post_message_logを非同期で実行
     lambda_payload = {
         "section": section,
-        "speaker": speaker,
+        "position": position,
         "conversationId": conversationId,
         "message": message
     }
