@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     
     # イベントからパラメータを取得
     section = event['section']
-    speaker = event['speaker']
+    position = event['position']
     conversationId = event['conversationId']
     message = event['message']
     
@@ -23,8 +23,8 @@ def lambda_handler(event, context):
     try:
         with connection.cursor() as cursor:
             # Commentsテーブルに必要情報を挿入
-            sql = "INSERT INTO Comments (section_id,speaker_id,conversation_id,content) VALUES (%s,%s,%s,%s)"
-            cursor.execute(sql, (section,speaker,conversationId,message,))
+            sql = "INSERT INTO Comments (section_id,position_id,conversation_id,content) VALUES (%s,%s,%s,%s)"
+            cursor.execute(sql, (section,position,conversationId,message,))
             connection.commit()
     except pymysql.MySQLError as e:
         print("Could not connect to MySQL instance.")
