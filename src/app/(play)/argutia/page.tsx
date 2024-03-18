@@ -2,6 +2,7 @@
 
 import ErrorOverlay from "@/components/Features/ErrorOverlay";
 import { useGenerativeAI } from "@/hooks/useGenerativeAi";
+import { useRealtimeJudgeAI } from "@/hooks/useRealtimeJudgeAI";
 import React from "react";
 import Argutia from "./components/Argutia";
 import Prepare from "./components/Prepare";
@@ -10,6 +11,7 @@ import Result from "./components/Result";
 const ArgutiaPage = () => {
 	const [phase, setPhase] = React.useState<Phase>("prepare");
 	const [data, setData] = React.useState<ArgutiaData>({
+		superiority: "draw",
 		conversationId: "",
 		agenda: "",
 		speaker1: {
@@ -27,7 +29,7 @@ const ArgutiaPage = () => {
 	});
 
 	const { isError } = useGenerativeAI(data, setData);
-	console.log(isError);
+	useRealtimeJudgeAI(data, setData);
 
 	switch (phase) {
 		case "prepare":

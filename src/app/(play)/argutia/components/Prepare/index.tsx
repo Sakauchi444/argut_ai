@@ -56,6 +56,7 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 		);
 		setData({
 			...data,
+			superiority: "draw",
 			conversationId: res.conversationId,
 			speaker1: { ...data.speaker1, id: res.positionA },
 			speaker2: { ...data.speaker2, id: res.positionB },

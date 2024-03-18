@@ -116,7 +116,7 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 		}
 		isLoading || setIsLoading(true);
 		return "";
-	}, [argutiaPhase, data.speaker1.comments, data.speaker2.comments, readIndex, isSpeaker1]);
+	}, [argutiaPhase, data.speaker1.comments, data.speaker2.comments, readIndex]);
 
 	const { ref } = useScramble({
 		text: setText,

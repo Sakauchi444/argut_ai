@@ -52,6 +52,7 @@ const Result: FC<Props> = ({ data, setData, setPhase }) => {
 	const handleNextArgutia = () => {
 		setPhase("prepare");
 		setData({
+			superiority: "draw",
 			conversationId: "",
 			agenda: "",
 			speaker1: {
