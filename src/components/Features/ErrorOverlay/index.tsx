@@ -17,7 +17,7 @@ const ErrorOverlay = () => {
 				style={{ objectFit: "contain" }}
 				className={classes.spin_and_shrink}
 			/>
-			<Title>
+			<Title order={3}>
 				ずんだもんの頭がパンクしてしまいました。もう一度お試しください。
 				<Button onClick={() => router.refresh()}>Reload</Button>
 			</Title>
