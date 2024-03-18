@@ -46,6 +46,8 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 	const { model: model1, position: position1 } = s1;
 	const { model: model2, position: position2 } = s2;
 
+	const isError = errorCount >= 4;
+
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		setS1Code("0");
@@ -60,7 +62,7 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 		if (conversationId === "") return;
 		// 最大12回まで冗長化
 		if (count >= 8) return;
-		if (errorCount >= 4) return;
+		if (errorCount >= 1) return;
 
 		const getData = async () => {
 			try {
@@ -138,5 +140,5 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 		getData();
 	}, [count, data, errorCount]);
 
-	return data;
+	return { data, isError };
 }
