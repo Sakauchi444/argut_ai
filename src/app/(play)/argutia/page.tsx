@@ -1,5 +1,6 @@
 "use client";
 
+import ErrorOverlay from "@/components/Features/ErrorOverlay";
 import { useGenerativeAI } from "@/hooks/useGenerativeAi";
 import React from "react";
 import Argutia from "./components/Argutia";
@@ -25,13 +26,19 @@ const ArgutiaPage = () => {
 		},
 	});
 
-	useGenerativeAI(data, setData);
+	const { isError } = useGenerativeAI(data, setData);
+	console.log(isError);
 
 	switch (phase) {
 		case "prepare":
 			return <Prepare setPhase={setPhase} setData={setData} />;
 		case "argutia":
-			return <Argutia setPhase={setPhase} data={data} />;
+			return (
+				<>
+					<Argutia setPhase={setPhase} data={data} />
+					{isError && <ErrorOverlay />}
+				</>
+			);
 		case "result":
 			return <Result setPhase={setPhase} data={data} setData={setData} />;
 	}
