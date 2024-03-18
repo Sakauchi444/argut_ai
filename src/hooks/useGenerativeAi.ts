@@ -62,7 +62,7 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 		if (conversationId === "") return;
 		// 最大12回まで冗長化
 		if (count >= 8) return;
-		if (errorCount >= 1) return;
+		if (errorCount >= 4) return;
 
 		const getData = async () => {
 			try {
