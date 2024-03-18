@@ -19,14 +19,24 @@ def lambda_handler(event, context):
     
     try:
         with connection.cursor() as cursor:
+            # query = """
+            #     SELECT Comments.id, Sections.name, Positions.name, Speakers.name, content FROM Comments 
+            #         JOIN Sections ON Comments.section_id = Sections.id 
+            #         JOIN Positions ON Sections.position_id = Positions.id 
+            #         JOIN Speakers ON Comments.speaker_id = Speakers.id
+            #         WHERE Comments.conversation_id=%s
+            #         ORDER BY Sections.id ASC;
+            # """
+            
             query = """
-                SELECT Comments.id, Sections.name, Positions.name, Speakers.name, content FROM Comments 
-                    JOIN Sections ON Comments.section_id = Sections.id 
-                    JOIN Positions ON Sections.position_id = Positions.id 
-                    JOIN Speakers ON Comments.speaker_id = Speakers.id
-                    WHERE Comments.conversation_id=%s
-                    ORDER BY Sections.id ASC;
+                SELECT Comments.id, Sections.name, Positions.name, Model.name, content FROM Comments 
+                INNER JOIN Sections ON Comments.section_id = Sections.id 
+                INNER JOIN Positions ON Comments.position_id = Positions.id 
+                INNER JOIN Model ON Positions.model_id = Model.id 
+                WHERE Comments.conversation_id=%s 
+                ORDER BY Sections.id ASC;
             """
+            
             cursor.execute(query, (conversation_id,))
             results = cursor.fetchall()
             connection.commit()

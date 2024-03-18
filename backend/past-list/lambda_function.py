@@ -15,10 +15,17 @@ def lambda_handler(event, context):
 
     
     with connection.cursor() as cursor:
+        # query = """
+        #     SELECT Conversations.id, Conversations.title, Speakers.name FROM Conversations 
+        #     JOIN Speakers ON Conversations.winner_id = Speakers.id
+        #     WHERE Speakers.name!='none'
+        # """
+        
         query = """
-            SELECT Conversations.id, Conversations.title, Speakers.name FROM Conversations 
-            JOIN Speakers ON Conversations.winner_id = Speakers.id
-            WHERE Speakers.name!='none'
+            SELECT Conversations.id, Conversations.title, Model.name FROM Conversations
+            INNER JOIN Positions ON Conversations.winner_id = Positions.id
+            INNER JOIN Model ON Positions.model_id = Model.id
+            WHERE Model.name!='none'
         """
         
         # query = """
