@@ -15,7 +15,7 @@ const PastArgutiaPage = () => {
 
   useEffect(() => {
     // APIルートからデータを取得する
-    fetch("/api/past_argutia")
+    fetch("/api/past/list")
       .then((response) => response.json())
       .then((data) => {
         const parsedBody = JSON.parse(data.body);
