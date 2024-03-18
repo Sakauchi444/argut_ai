@@ -1,4 +1,4 @@
-type Model = "GPT-3.5" | "GPT-4" | "Claude-2" | "Claude-3";
+type Model = "GPT-3.5" | "GPT-4" | "Claude-2" | "Claude-3-Opus" | "Claude-3-Sonnet";
 
 type Bot = {
 	bot: string;
