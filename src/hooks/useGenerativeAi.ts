@@ -39,8 +39,8 @@ const caseSpeaker1 = [0, 3, 5, 7];
 const caseSpeaker2 = [2, 1, 4, 6];
 
 export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAction<ArgutiaData>>) {
-	const [speaker1, setSpeaker1] = useState<SpeakerWithId>({ ...data.speaker1, chatCodeId: "0" });
-	const [speaker2, setSpeaker2] = useState<SpeakerWithId>({ ...data.speaker2, chatCodeId: "0" });
+	const [s1Code, setS1Code] = useState<string>("0");
+	const [s2Code, setS2Code] = useState<string>("0");
 	const [count, setCount] = useState(0);
 
 	const { conversationId, agenda, speaker1: s1, speaker2: s2 } = data;
@@ -66,19 +66,19 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 					const result: Response = await fetcher(
 						"/api/generative-ai",
 						conversationId,
-						speaker1.chatCodeId,
+						s1Code,
 						message,
 						bots[model1].bot,
 						bots[model1].speakerId,
 						String(count + 1),
 					);
-					if (result.chatCode === speaker1.chatCodeId) {
+					if (result.chatCode === s1Code) {
 						// IDが前回と同じ場合、messageを配列に追加
 						setData({ ...data, speaker1: { ...s1, comments: [...s1.comments, result.message] } });
 					} else {
 						// 異なるIDの場合、配列を初期化して新しいmessageを追加
 						setData({ ...data, speaker1: { ...s1, comments: [result.message] } });
-						setSpeaker1({ ...speaker1, chatCodeId: result.chatCode });
+						setS1Code(result.chatCode);
 					}
 				} else {
 					const message =
@@ -93,17 +93,17 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 					const result: Response = await fetcher(
 						"/api/generative-ai",
 						conversationId,
-						speaker2.chatCodeId,
+						s2Code,
 						message,
 						bots[model2].bot,
 						bots[model2].speakerId,
 						String(count + 1),
 					);
-					if (result.chatCode === speaker2.chatCodeId) {
+					if (result.chatCode === s2Code) {
 						setData({ ...data, speaker2: { ...s2, comments: [...s2.comments, result.message] } });
 					} else {
 						setData({ ...data, speaker2: { ...s2, comments: [result.message] } });
-						setSpeaker2({ ...speaker2, chatCodeId: result.chatCode });
+						setS2Code(result.chatCode);
 					}
 				}
 			} catch (error) {

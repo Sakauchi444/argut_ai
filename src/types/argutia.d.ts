@@ -20,12 +20,6 @@ type Speaker = {
 	comments: string[];
 };
 
-type ChatCodeId = {
-	chatCodeId: string;
-};
-
-type SpeakerWithId = Speaker & ChatCodeId;
-
 type ArgutiaPhase =
 	| "initialize"
 	| "speaker1-arguments"
