@@ -61,3 +61,11 @@
   80%{opacity: 1;}
   100%{transform: rotate(0deg) translateX(100%); opacity:0; visibility: hidden;}
 }
+
+.title {
+  color: var(--mantine-color-text);
+  --text-gradient: linear-gradient(45deg, var(--mantine-color-pink-filled) 0%, var(--mantine-color-yellow-filled) 100%);
+  background-image: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
