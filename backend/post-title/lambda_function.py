@@ -70,5 +70,7 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps({
             "conversationId": conversation_id,
+            "positionA": inserted_ids[0],
+            "positionB": inserted_ids[1]
         }, ensure_ascii=False)
     }
