@@ -33,21 +33,34 @@ def lambda_handler(event, context):
     if isinstance(body, str):
         body = json.loads(body)
     title = str(body["title"])
-    position_a=str(body["positionA"])
-    position_b=str(body["positionB"])
+    a_name=str(body["a_position_name"])
+    a_model_id=str(body["a_model_id"])
+    b_name=str(body["b_position_name"])
+    b_model_id=str(body["b_model_id"])
     
     try:
         with connection.cursor() as cursor:
+            sql_insert = "INSERT INTO Positions (model_id,name) VALUES (%s,%s);"
+            
+            # 挿入された各行のIDを格納するリスト
+            inserted_ids = []
+            
+            # データを挿入し、各IDを取得
+            cursor.execute(sql_insert, (a_model_id,a_name))
+            last_id = cursor.lastrowid
+            inserted_ids.append(last_id)
+            
+            cursor.execute(sql_insert, (b_model_id,b_name))
+            last_id = cursor.lastrowid
+            inserted_ids.append(last_id)
+            
+            logging.info(inserted_ids)
+            
             # Conversationsテーブルにtitleを挿入
-            sql = "INSERT INTO Conversations (title,winner_id) VALUES (%s,6);" # winner_id:6(none)
-            cursor.execute(sql, (title,))
+            sql = "INSERT INTO Conversations (title,position_a,position_b) VALUES (%s,%s,%s);"
+            cursor.execute(sql, (title,inserted_ids[0],inserted_ids[1]))
             conversation_id = cursor.lastrowid  # 挿入したレコードのIDを取得
             
-            sql = "INSERT INTO Positions (conversation_id,name) VALUES (%s,%s);"
-            cursor.executemany(sql, [
-                (conversation_id,position_a),
-                (conversation_id,position_b)
-            ])
             connection.commit()
     finally:
         connection.close()
