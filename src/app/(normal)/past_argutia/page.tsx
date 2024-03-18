@@ -1,5 +1,5 @@
 "use client";
-import { Modal, Table, Text } from "@mantine/core";
+import { Container, Modal, Table, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -78,30 +78,30 @@ const PastArgutiaPage = () => {
 	};
 
 	const rows = conversations.map((row) => (
-		<tr key={row.id} onClick={() => handleRowClick(row)} style={{ cursor: "pointer" }}>
-			<td>{row.id}</td>
+		<Table.Tr key={row.id} onClick={() => handleRowClick(row)} style={{ cursor: "pointer" }}>
+			<Table.Td>{row.id}</Table.Td>
 
-			<td>
+			<Table.Td>
 				<Link href={`/past_argutia/${row.id}`}>{row.title}</Link>
-			</td>
+			</Table.Td>
 
-			<td>{row.winner}</td>
-		</tr>
+			<Table.Td>{row.winner}</Table.Td>
+		</Table.Tr>
 	));
 
 	return (
-		<>
-			<Table>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Title</th>
-						<th>Winner</th>
-					</tr>
-				</thead>
-				<tbody>{rows}</tbody>
+		<Container size="lg">
+			<Table verticalSpacing="lg">
+				<Table.Thead>
+					<Table.Tr>
+						<Table.Th>ID</Table.Th>
+						<Table.Th>Title</Table.Th>
+						<Table.Th>Winner</Table.Th>
+					</Table.Tr>
+				</Table.Thead>
+				<Table.Tbody>{rows}</Table.Tbody>
 			</Table>
-		</>
+		</Container>
 	);
 };
 
