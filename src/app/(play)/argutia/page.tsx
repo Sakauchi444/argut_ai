@@ -29,7 +29,7 @@ const ArgutiaPage = () => {
 	});
 
 	const { isError } = useGenerativeAI(data, setData);
-	useRealtimeJudgeAI(data, setData);
+	const { feedbacks } = useRealtimeJudgeAI(data, setData);
 
 	switch (phase) {
 		case "prepare":
@@ -42,7 +42,7 @@ const ArgutiaPage = () => {
 				</>
 			);
 		case "result":
-			return <Result setPhase={setPhase} data={data} setData={setData} />;
+			return <Result feedbacks={feedbacks} setPhase={setPhase} data={data} setData={setData} />;
 	}
 };
 

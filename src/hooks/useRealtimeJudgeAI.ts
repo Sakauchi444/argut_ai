@@ -26,6 +26,7 @@ export function useRealtimeJudgeAI(
 	data: ArgutiaData,
 	setData: Dispatch<SetStateAction<ArgutiaData>>,
 ) {
+  const [feedbacks, setFeedbacks] = useState<string[]>([]);
 	const [chatCodeId, setChatCode] = useState<string>("0");
 	const [count, setCount] = useState(0);
 	const [errorCount, setErrorCount] = useState(0);
@@ -43,7 +44,6 @@ export function useRealtimeJudgeAI(
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		console.log(count, c1.length, c2.length, conversationId, errorCount, chatCodeId);
 
 		if (c1.length !== c2.length) return;
 		if (conversationId === "") return;
@@ -60,7 +60,6 @@ export function useRealtimeJudgeAI(
 					if (result.chatCodeId !== chatCodeId) {
 						setChatCode(result.chatCodeId);
 					}
-					console.log(result.comment);
 					const comment = result.comment;
 					if (comment.includes(p1)) {
 						setData((prev) => ({
@@ -78,6 +77,7 @@ export function useRealtimeJudgeAI(
 							superiority: "draw",
 						}));
 					}
+          setFeedbacks((prev) => [...prev, comment]);
 					setCount((prev) => prev + 1);
 				}
 			} catch {
@@ -86,5 +86,6 @@ export function useRealtimeJudgeAI(
 		};
 		getData();
 	}, [count, data, errorCount]);
-	console.log(data.superiority);
+
+  return { feedbacks };
 }
