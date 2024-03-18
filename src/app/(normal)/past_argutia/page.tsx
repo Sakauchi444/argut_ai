@@ -1,116 +1,62 @@
 "use client";
-import { Modal, Table, Text } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import React, { useState } from "react";
+import { Container, Table } from "@mantine/core";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 
-// データの型定義
 interface ConversationData {
-	id: number;
-	title: string;
-	winner_id: number;
+  id: number;
+  title: string;
+  winner: string;
 }
-
-interface CommentData {
-	id: number;
-	section_id: number;
-	speaker_id: number;
-	conversation_id: number;
-	content: string;
-}
-
-interface SectionData {
-	id: number;
-	position_id: number;
-	name: string;
-}
-
-interface SpeakerData {
-	id: number;
-	name: string;
-}
-
-interface PositionData {
-	id: number;
-	conversation_id: number;
-	name: string;
-}
-
-// テーブルデータ
-const conversations: ConversationData[] = [
-	{ id: 1, title: "きのこの山かたけのこの里か", winner_id: 1 },
-	{ id: 2, title: "sample", winner_id: 2 },
-];
-
-const comments: CommentData[] = [
-	{ id: 1, section_id: 1, speaker_id: 1, conversation_id: 1, content: "やっぱきのこの山っしょ" },
-	{ id: 2, section_id: 2, speaker_id: 2, conversation_id: 1, content: "は？にわかで草" },
-	{
-		id: 3,
-		section_id: 3,
-		speaker_id: 1,
-		conversation_id: 1,
-		content: "は？そちらこそ何言ってんの？",
-	},
-	{ id: 4, section_id: 4, speaker_id: 2, conversation_id: 1, content: "話にならんでござる" },
-];
-
-const sections: SectionData[] = [
-	{ id: 1, position_id: 1, name: "はじめ" },
-	{ id: 2, position_id: 2, name: "に" },
-	{ id: 3, position_id: 1, name: "さん" },
-	{ id: 4, position_id: 2, name: "よん" },
-];
-const speakers: SpeakerData[] = [
-	{ id: 1, name: "Claude3" },
-	{ id: 2, name: "GPT4" },
-];
-const Positions: PositionData[] = [
-	{ id: 1, conversation_id: 1, name: "きのこの山至上主義" },
-	{ id: 2, conversation_id: 1, name: "たけのこの里しかかたん" },
-];
 
 const PastArgutiaPage = () => {
-	const [selectedRow, setSelectedRow] = useState<ConversationData | null>(null);
+  const [conversations, setConversations] = useState<ConversationData[]>([]);
+  const [selectedRow, setSelectedRow] = useState<ConversationData | null>(null);
 
-	const handleRowClick = (row: ConversationData) => {
-		setSelectedRow(row);
-		open(); // モーダルを開く
-	};
+  useEffect(() => {
+    // APIルートからデータを取得する
+    fetch("/api/past_argutia")
+      .then((response) => response.json())
+      .then((data) => {
+        const parsedBody = JSON.parse(data.body);
+        setConversations(parsedBody);
+        console.log(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
-	const rows = conversations.map((row) => (
-		<tr key={row.id} onClick={() => handleRowClick(row)} style={{ cursor: "pointer" }}>
-			<td>{row.id}</td>
-			<td>{row.title}</td>
-			<td>{row.winner_id}</td>
-		</tr>
-	));
+  const handleRowClick = (row: ConversationData) => {
+    setSelectedRow(row);
+  };
 
-	const [opened, { open, close }] = useDisclosure(false);
+  const rows = conversations.map((row, index) => (
+    <Table.Tr
+      key={index}
+      onClick={() => handleRowClick(row)}
+      style={{ cursor: "pointer" }}
+    >
+      <Table.Td>{row.id}</Table.Td>
+      <Table.Td>
+        <Link href={`/past_argutia/${row.id}`}>{row.title}</Link>
+      </Table.Td>
+      <Table.Td>{row.winner}</Table.Td>
+    </Table.Tr>
+  ));
 
-	return (
-		<>
-			<Modal opened={opened} onClose={close} title="Authentication" centered>
-				{selectedRow && (
-					<div>
-						<Text>Selected Row:</Text>
-						<Text>ID: {selectedRow.id}</Text>
-						<Text>Name: {selectedRow.title}</Text>
-						<Text>Description: {selectedRow.winner_id}</Text>
-					</div>
-				)}
-			</Modal>
-			<Table>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Title</th>
-						<th>Winner</th>
-					</tr>
-				</thead>
-				<tbody>{rows}</tbody>
-			</Table>
-		</>
-	);
+  return (
+    <Container size="lg">
+      <Table verticalSpacing="lg">
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>ID</Table.Th>
+            <Table.Th>Title</Table.Th>
+            <Table.Th>Winner</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </Container>
+  );
 };
 
 export default PastArgutiaPage;

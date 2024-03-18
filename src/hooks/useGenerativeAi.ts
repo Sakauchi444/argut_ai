@@ -7,7 +7,7 @@ const fetcher = async (
 	chatCodeId: string,
 	message: string,
 	bot: string,
-	speakerId: string,
+	positionId: string,
 	sectionId: string,
 ) => {
 	const response = await fetch(url, {
@@ -17,7 +17,7 @@ const fetcher = async (
 			chatCodeId: chatCodeId,
 			message: message,
 			bot: bot,
-			speakerId: speakerId,
+			positionId: positionId,
 			sectionId: sectionId,
 		}),
 	});
@@ -43,8 +43,8 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 	const [errorCount, setErrorCount] = useState(0);
 
 	const { conversationId, agenda, speaker1: s1, speaker2: s2 } = data;
-	const { model: model1, position: position1 } = s1;
-	const { model: model2, position: position2 } = s2;
+	const { id: id1, model: model1, position: position1 } = s1;
+	const { id: id2, model: model2, position: position2 } = s2;
 
 	const isError = errorCount >= 4;
 
@@ -81,7 +81,7 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 						s1Code,
 						message,
 						bots[model1].bot,
-						bots[model1].speakerId,
+						id1?.toString() || "",
 						String(count + 1),
 					);
 					if (result.chatCode === s1Code) {
@@ -114,7 +114,7 @@ export function useGenerativeAI(data: ArgutiaData, setData: Dispatch<SetStateAct
 						s2Code,
 						message,
 						bots[model2].bot,
-						bots[model2].speakerId,
+						id2?.toString() || "",
 						String(count + 1),
 					);
 					if (result.chatCode === s2Code) {

@@ -15,6 +15,7 @@ type ArgutiaData = {
 };
 
 type Speaker = {
+	id: number | null;
 	model: Model;
 	position: string;
 	comments: string[];

@@ -1,6 +1,6 @@
 "use client";
 
-import { SampleAgendas, models } from "@/constants";
+import { SampleAgendas, bots, models } from "@/constants";
 import { Box, Button, Container, Flex, Input, NativeSelect, Text, Title, rem } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React, { Dispatch, FC, SetStateAction } from "react";
@@ -13,13 +13,22 @@ type Props = {
 
 type SubmitData = { [P in "agenda" | "speaker1" | "speaker2"]: ArgutiaData[P] };
 
-const fetcher = async (url: string, title: string, positionA: string, positionB: string) => {
+const fetcher = async (
+	url: string,
+	title: string,
+	a_position_name: string,
+	a_model_id: string,
+	b_position_name: string,
+	b_model_id: string,
+) => {
 	const response = await fetch(url, {
 		method: "POST",
 		body: JSON.stringify({
 			title: title,
-			positionA: positionA,
-			positionB: positionB,
+			a_position_name: a_position_name,
+			a_model_id: a_model_id,
+			b_position_name: b_position_name,
+			b_model_id: b_model_id,
 		}),
 	});
 	if (!response.ok) {
@@ -30,6 +39,8 @@ const fetcher = async (url: string, title: string, positionA: string, positionB:
 
 type Response = {
 	conversationId: string;
+	positionA: number;
+	positionB: number;
 };
 
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
@@ -39,9 +50,16 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 			"/api/start",
 			data.agenda,
 			data.speaker1.position,
+			bots[data.speaker1.model].speakerId,
 			data.speaker2.position,
+			bots[data.speaker2.model].speakerId,
 		);
-		setData({ ...data, conversationId: res.conversationId });
+		setData({
+			...data,
+			conversationId: res.conversationId,
+			speaker1: { ...data.speaker1, id: res.positionA },
+			speaker2: { ...data.speaker2, id: res.positionB },
+		});
 	};
 
 	const handleAutoSelect = () => {
@@ -49,14 +67,12 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 		form.setValues({
 			agenda: sample.agenda,
 			speaker1: {
-				model: form.values.speaker1.model,
+				...form.values.speaker1,
 				position: sample.speaker1,
-				comments: [],
 			},
 			speaker2: {
-				model: form.values.speaker2.model,
+				...form.values.speaker2,
 				position: sample.speaker2,
-				comments: [],
 			},
 		});
 	};
@@ -65,11 +81,13 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 		initialValues: {
 			agenda: "",
 			speaker1: {
+				id: null,
 				model: "GPT-4",
 				position: "",
 				comments: [],
 			},
 			speaker2: {
+				id: null,
 				model: "GPT-4",
 				position: "",
 				comments: [],
