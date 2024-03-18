@@ -27,7 +27,6 @@ const ArgutiaPage = () => {
 	});
 
 	const { isError } = useGenerativeAI(data, setData);
-	console.log(isError);
 
 	switch (phase) {
 		case "prepare":
