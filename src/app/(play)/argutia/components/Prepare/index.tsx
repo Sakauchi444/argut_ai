@@ -39,6 +39,8 @@ const fetcher = async (
 
 type Response = {
 	conversationId: string;
+	positionA: number;
+	positionB: number;
 };
 
 const Prepare: FC<Props> = ({ setPhase, setData }) => {
@@ -52,7 +54,12 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 			data.speaker2.position,
 			bots[data.speaker2.model].speakerId,
 		);
-		setData({ ...data, conversationId: res.conversationId });
+		setData({
+			...data,
+			conversationId: res.conversationId,
+			speaker1: { ...data.speaker1, id: res.positionA },
+			speaker2: { ...data.speaker2, id: res.positionB },
+		});
 	};
 
 	const handleAutoSelect = () => {
@@ -60,14 +67,12 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 		form.setValues({
 			agenda: sample.agenda,
 			speaker1: {
-				model: form.values.speaker1.model,
+				...form.values.speaker1,
 				position: sample.speaker1,
-				comments: [],
 			},
 			speaker2: {
-				model: form.values.speaker2.model,
+				...form.values.speaker2,
 				position: sample.speaker2,
-				comments: [],
 			},
 		});
 	};
@@ -76,11 +81,13 @@ const Prepare: FC<Props> = ({ setPhase, setData }) => {
 		initialValues: {
 			agenda: "",
 			speaker1: {
+				id: null,
 				model: "GPT-4",
 				position: "",
 				comments: [],
 			},
 			speaker2: {
+				id: null,
 				model: "GPT-4",
 				position: "",
 				comments: [],

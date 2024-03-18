@@ -12,11 +12,13 @@ const ArgutiaPage = () => {
 		conversationId: "",
 		agenda: "",
 		speaker1: {
+			id: null,
 			model: "GPT-4",
 			position: "",
 			comments: [],
 		},
 		speaker2: {
+			id: null,
 			model: "GPT-4",
 			position: "",
 			comments: [],
