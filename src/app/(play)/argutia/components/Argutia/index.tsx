@@ -118,7 +118,7 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 		return "";
 	}, [argutiaPhase, data.speaker1.comments, data.speaker2.comments, readIndex, isSpeaker1]);
 
-	const { ref, replay } = useScramble({
+	const { ref } = useScramble({
 		text: setText,
 		speed:
 			0.4 *
@@ -192,9 +192,6 @@ const Argutia: FC<Props> = ({ data, setPhase }) => {
 								justify={"space-around"}
 								className={`${classes.next_container} ${!isSpeaker1 && classes.direction_ltr}`}
 							>
-								<Button onClick={replay} size={"md"}>
-									もう一度
-								</Button>
 								<Button size="md" onClick={handleNextPhase}>
 									{argutiaPhase === "speaker1-closing-arguments" ? "終了する" : "次へ進む"}
 								</Button>
