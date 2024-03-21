@@ -5,21 +5,16 @@ import pymysql
 def lambda_handler(event, context):
     
     # Configuration for your RDS database
-    endpoint = 'database-1.cvccqeo2slwn.ap-northeast-1.rds.amazonaws.com'
-    username = 'admin'
-    password = 'qwer1234'
-    database_name = 'hackit'
+    endpoint = ''
+    username = ''
+    password = ''
+    database_name = ''
     
     # Connection setup for RDS
     connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name)
 
     
     with connection.cursor() as cursor:
-        # query = """
-        #     SELECT Conversations.id, Conversations.title, Speakers.name FROM Conversations 
-        #     JOIN Speakers ON Conversations.winner_id = Speakers.id
-        #     WHERE Speakers.name!='none'
-        # """
         
         query = """
             SELECT Conversations.id, Conversations.title, Model.name FROM Conversations
@@ -27,10 +22,6 @@ def lambda_handler(event, context):
             INNER JOIN Model ON Positions.model_id = Model.id
             WHERE Model.name!='none'
         """
-        
-        # query = """
-        #     SELECT 1;
-        # """
         
         cursor.execute(query, )
         results = cursor.fetchall()
@@ -45,9 +36,7 @@ def lambda_handler(event, context):
         }
         for row in results
     ]
-    
-    
-    # TODO implement
+
     # 応答を返す
     return {
         'statusCode': 200,

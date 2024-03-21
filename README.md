@@ -19,3 +19,5 @@ https://docs.google.com/document/d/1IlEeJMFgx2W9Uz2Yu6vKjD8kF3H9yP0FQnp9-vPuuWM/
 ## データベース
 ![image](./docs/imgs/ERdiagram.png)
 
+## deloy
+Render
