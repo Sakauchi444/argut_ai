@@ -5,15 +5,11 @@ import json
 import logging
 
 def lambda_handler(event, context):
-    # # データベース接続情報
-    # host = "your_rds_endpoint"
-    # user = "your_username"
-    # password = "your_password"
-    # database = "your_database_name"
-    endpoint = 'database-1.cvccqeo2slwn.ap-northeast-1.rds.amazonaws.com'
-    username = 'admin'
-    password = 'qwer1234'
-    database_name = 'hackit'
+    # データベース接続情報
+    endpoint = ''
+    username = ''
+    password = ''
+    database_name = ''
 
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)

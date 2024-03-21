@@ -2,10 +2,10 @@ import json
 import pymysql
 
 def lambda_handler(event, context):
-    endpoint = 'database-1.cvccqeo2slwn.ap-northeast-1.rds.amazonaws.com'
-    username = 'admin'
-    password = 'qwer1234'
-    database_name = 'hackit'
+    endpoint = ''
+    username = ''
+    password = ''
+    database_name = ''
     
     # イベントからパラメータを取得
     section = event['section']

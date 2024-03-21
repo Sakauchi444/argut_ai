@@ -1,16 +1,18 @@
 import pymysql
 import json
 
-# Configuration for your RDS database
-endpoint = 'database-1.cvccqeo2slwn.ap-northeast-1.rds.amazonaws.com'
-username = 'admin'
-password = 'qwer1234'
-database_name = 'hackit'
-
-# Connection setup for RDS
-connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name)
 
 def lambda_handler(event, context):
+        
+    # Configuration for your RDS database
+    endpoint = ''
+    username = ''
+    password = ''
+    database_name = ''
+    
+    # Connection setup for RDS
+    connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name)
+    
     ## input
     body = event["body"]
     body_dict = json.loads(body)
@@ -19,17 +21,10 @@ def lambda_handler(event, context):
     
     try:
         with connection.cursor() as cursor:
-            # query = """
-            #     SELECT Comments.id, Sections.name, Positions.name, Speakers.name, content FROM Comments 
-            #         JOIN Sections ON Comments.section_id = Sections.id 
-            #         JOIN Positions ON Sections.position_id = Positions.id 
-            #         JOIN Speakers ON Comments.speaker_id = Speakers.id
-            #         WHERE Comments.conversation_id=%s
-            #         ORDER BY Sections.id ASC;
-            # """
             
             query = """
-                SELECT Comments.id, Sections.name, Positions.name, Model.name, content FROM Comments 
+                SELECT Comments.id, Sections.name, Positions.name, Model.name, Conversations.title, content FROM Comments 
+                INNER JOIN Conversations ON Comments.conversation_id = Conversations.id
                 INNER JOIN Sections ON Comments.section_id = Sections.id 
                 INNER JOIN Positions ON Comments.position_id = Positions.id 
                 INNER JOIN Model ON Positions.model_id = Model.id 
@@ -49,7 +44,8 @@ def lambda_handler(event, context):
             'section_name': row[1],
             'position_name': row[2],
             'speaker_name': row[3],
-            'content': row[4]
+            'title': row[4],
+            'content': row[5]
         }
         for row in results
     ]

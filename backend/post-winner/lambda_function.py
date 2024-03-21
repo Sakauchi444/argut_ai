@@ -1,22 +1,15 @@
 import json
+import pymysql
 
 def lambda_handler(event, context):
     # # データベース接続情報
-    # host = "your_rds_endpoint"
-    # user = "your_username"
-    # password = "your_password"
-    # database = "your_database_name"
-    endpoint = 'database-1.cvccqeo2slwn.ap-northeast-1.rds.amazonaws.com'
-    username = 'admin'
-    password = 'qwer1234'
-    database_name = 'hackit'
-
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
+    endpoint = ''
+    username = ''
+    password = ''
+    database_name = ''
 
     # データベースに接続
     try:
-        # connection = pymysql.connect(host=host, user=user, password=password, database=database, cursorclass=pymysql.cursors.DictCursor)
         connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name)
     except pymysql.MySQLError as e:
         print("Could not connect to MySQL instance.")
@@ -38,7 +31,7 @@ def lambda_handler(event, context):
                     SET winner_id = %s
                     WHERE id = %s;
             """
-            cursor.execute(sql, (conversation_id,winner_id))
+            cursor.execute(sql, (winner_id,conversation_id))
             conversation_id = cursor.lastrowid  # 挿入したレコードのIDを取得
             connection.commit()
     finally:
@@ -47,5 +40,5 @@ def lambda_handler(event, context):
     # 応答を返す
     return {
         'statusCode': 200,
-        'body': "Send OK"
+        'body': json.dumps({"message": "ok"})
     }
