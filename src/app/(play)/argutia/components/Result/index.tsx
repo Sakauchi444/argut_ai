@@ -8,6 +8,7 @@ import Link from "next/link";
 import React, { Dispatch, FC, SetStateAction, useState } from "react";
 import classes from "./result.module.css";
 type Props = {
+	feedbacks: string[]
 	data: ArgutiaData;
 	setData: Dispatch<SetStateAction<ArgutiaData>>;
 	setPhase: Dispatch<SetStateAction<Phase>>;
@@ -27,8 +28,7 @@ const fetcher = async (url: string, conversationId: string, speakerId: string) =
 	return response.json();
 };
 
-const Result: FC<Props> = ({ data, setData, setPhase }) => {
-	// TODO: fetch judge API
+const Result: FC<Props> = ({ feedbacks, data, setData, setPhase }) => {
 
 	const handleSubmit = async () => {
 		close();
@@ -52,6 +52,7 @@ const Result: FC<Props> = ({ data, setData, setPhase }) => {
 	const handleNextArgutia = () => {
 		setPhase("prepare");
 		setData({
+			superiority: "draw",
 			conversationId: "",
 			agenda: "",
 			speaker1: {
@@ -69,11 +70,7 @@ const Result: FC<Props> = ({ data, setData, setPhase }) => {
 		});
 	};
 
-	const _result_data = {
-		winner: "speaker1",
-		model: "GPT-4",
-		text: "スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。スピーチの内容がよかったです。文章量が増えて、より詳細なフィードバックができます。また、話し方や表現力も素晴らしかったです。聴衆を引きつける力がありますね。",
-	};
+	
 	const [show, setShow] = useState(false);
 	const [status, setStatus] = useState<"sending" | "success" | "error">();
 	const [opened, { open, close }] = useDisclosure(false);
@@ -136,12 +133,10 @@ const Result: FC<Props> = ({ data, setData, setPhase }) => {
 							/>
 							<Text ta={"center"}>
 								審査員
-								<br />
-								{_result_data.model}
 							</Text>
 						</Box>
 						<SpeechBubble direction="left">
-							<Text c={"black"}>{_result_data.text}</Text>
+							<Text c={"black"}>{feedbacks[feedbacks.length - 1]}</Text>
 						</SpeechBubble>
 					</Flex>
 					{status && status === "success" ? (

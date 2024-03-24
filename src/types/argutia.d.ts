@@ -8,6 +8,7 @@ type Bot = {
 type Phase = "prepare" | "argutia" | "result";
 
 type ArgutiaData = {
+	superiority: "speaker1" | "speaker2" | "draw";
 	conversationId: string;
 	agenda: string;
 	speaker1: Speaker;
